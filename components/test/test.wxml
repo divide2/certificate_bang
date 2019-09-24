@@ -1,0 +1,2 @@
+<!--components/test/test.wxml-->
+<button class="cu-btn round sm">小尺寸</button>

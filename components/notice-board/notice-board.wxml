@@ -1,0 +1,7 @@
+<!--components/notice-board/notice-board.wxml-->
+<view>
+  <view>
+    <slot></slot>
+    <text class="content">新人注册专享50元优惠券，你来我就送</text>
+  </view>
+</view>

@@ -1,0 +1,7 @@
+/* components/notice-board/notice-board.wxss */
+.content {
+  margin-left: 20rpx;
+  color: #929292;
+  font-size: 24rpx;
+  font-weight: bold;
+}

@@ -1,3 +1,11 @@
 <search-header>
-<text class="iconfont icon-loc-s"></text>
+  <view class="search-header">
+    <view class="selected-location">
+      <text class="iconfont icon-location"></text>
+      <text class="location">{{location}}</text>
+    </view>
+    <view class="input-wrap">
+      <input placeholder="证书名称或课程名称" placeholder-class="input-placeholder" bindfocus="goToSearch" />
+    </view>
+  </view>
 </search-header>

@@ -1,0 +1,23 @@
+<!--components/course-card/course-card.wxml-->
+
+<view class="course-card">
+  <view class="top">
+    <view class="image-wrap">
+      <image src="{{course.image}}"></image>
+    </view>
+    <view class="info">
+      <view class="name-wrap">
+        <text class="name">{{course.name}}</text>
+      </view>
+      <text wx:for="{{course.tags}}" wx:key="index" class="tag">{{item}}</text>
+      <view class="address-price">
+        <text class="address">{{course.address}}</text>
+        <text class="price">￥{{course.price}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="bottom">
+    <text class="date">{{course.date}}</text>
+    <button class="btn">立即报名</button>
+  </view>
+</view>

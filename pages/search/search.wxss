@@ -1,0 +1,32 @@
+/* pages/search/search.wxss */
+
+.main {
+  margin-top:160rpx;
+  background-color: #fff;
+}
+.group {
+  padding: 30rpx 30rpx 0 30rpx;
+}
+.group-title {
+ font-size: 32rpx;
+ font-weight: bold;
+}
+.options {
+  top: 80rpx !important;
+  background-color: #fff;
+}
+
+.option-list {
+  position: absolute;
+  width: 100%;
+  background-color: #fff;
+  top: 60rpx;
+  left: 0;
+}
+.option-item {
+  display:flex;
+  justify-content: space-between;
+}
+.radio-item{
+  display: block;
+}

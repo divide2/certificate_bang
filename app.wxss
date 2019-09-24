@@ -1,8 +1,25 @@
-@import "../static/css/inconfont.wxss";
 /**app.wxss**/
+@import "./static/css/iconfont.wxss";
+@import "colorui/main.wxss";
+@import "colorui/icon.wxss";
+@import "colorui/animation.wxss";
 .container {
   height: 100%;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
 } 
+
+.black {
+  color: red;
+}
+
+text {
+  background: red；
+}
+.m-10 {
+  margin: 10rpx;
+}
+.p-10 {
+  padding: 10rpx;
+}

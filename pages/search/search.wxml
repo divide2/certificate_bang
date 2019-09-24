@@ -1,0 +1,48 @@
+<!--pages/search/search.wxml-->
+<view class="nav fixed">
+  <search-header></search-header>
+</view>
+
+<view class="main">
+  <!-- <scroll-view>
+  <view class="group">
+    <view class="group-title">历史搜索</view>
+    <view class="flex flex-wrap align-center bg-white p-10">
+      <button class="cu-btn round sm m-10">小尺寸</button>
+      <button class="cu-btn round sm m-10">小尺寸</button>
+      <button class="cu-btn round sm m-10">小尺寸</button>
+      <button class="cu-btn round sm m-10">小尺小尺寸小尺寸小尺寸寸</button>
+      <button class="cu-btn round sm m-10">小尺寸小尺寸小尺寸小尺寸小尺寸小尺寸小尺寸小尺寸小尺寸</button>
+    </view>
+  </view>
+</scroll-view> -->
+  <view class="list">
+
+    <view class="nav options flex fixed">
+      <view class="flex-sub padding-sm text-center" wx:for="{{options}}" wx:key="{{index}}" bindtap='clickOption' data-index="{{index}}">
+        <text>{{item.name}}</text>
+        <text class="cuIcon-unfold" wx:if="{{!item.fold}}"></text>
+        <text class="cuIcon-fold" wx:if="{{item.fold}}"></text>
+        <view class="option-list" wx:if="{{item.fold}}">
+          <!-- <view class="option-item padding-sm" wx:for="{{item.list}}" wx:for-item="option" wx:key="id">
+          {{option.name}}
+          </view> -->
+          <radio-group>
+            <radio wx:for-items="{{item.list}}" wx:for-item="option" wx:key="index" value="{{option.id}}" checked="{{option.checked}}" class="radio-item">
+              <text>{{option.name}}</text>
+            </radio>
+          </radio-group>
+        </view>
+      </view>
+    </view>
+  </view>
+  <scroll-view>
+    <view>
+      <view wx:for="{{courses}}" wx:key="index">
+        <course-card class="course-card" course="{{item}}"></course-card>
+        <course-card class="course-card" course="{{item}}"></course-card>
+        <course-card class="course-card" course="{{item}}"></course-card>
+      </view>
+    </view>
+  </scroll-view>
+</view>
