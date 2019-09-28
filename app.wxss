@@ -23,3 +23,7 @@ text {
 .p-10 {
   padding: 10rpx;
 }
+
+.display-inline-block{
+  display:inline-block !important;
+}

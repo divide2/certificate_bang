@@ -29,19 +29,19 @@ Page({
         list: [{
           checked: 'true',
           name: '全部',
-          id: 9
-        }, {
-          name: '户外登山',
           id: 0
         }, {
-          name: '医疗急救',
+          name: '户外登山',
           id: 1
         }, {
-          name: '救援技能',
+          name: '医疗急救',
           id: 2
         }, {
-          name: '社区街道',
+          name: '救援技能',
           id: 3
+        }, {
+          name: '社区街道',
+          id: 4
         }]
       }, {
         name: '费用选择',
@@ -49,13 +49,13 @@ Page({
         list: [{
           checked: 'true',
           name: '全部',
-          id: 9
-        }, {
-          name: '免费',
           id: 0
         }, {
-          name: '收费',
+          name: '免费',
           id: 1
+        }, {
+          name: '收费',
+          id: 2
         }]
       },
       {
@@ -64,13 +64,13 @@ Page({
         list: [{
           checked: 'true',
           name: '全部',
-          id: 9
-        }, {
-          name: '有证',
           id: 0
         }, {
-          name: '无证',
+          name: '有证',
           id: 1
+        }, {
+          name: '无证',
+          id: 2
         }]
       }
     ],
@@ -78,14 +78,14 @@ Page({
      * 当前过滤条件
      */
     cur_option_list_index: null,
-    test_data:[{
+    test_data: [{
       value: '1',
       name: '1',
       checked: true
     }, {
-        value: '2',
-        name: '3'
-      }]
+      value: '2',
+      name: '3'
+    }]
   },
 
   /**
@@ -168,7 +168,26 @@ Page({
       })
     }
   },
-  selectOption: function() {
-
+  selectOption: function(e) {
+    let arrs = this.data.options[this.data.cur_option_list_index].list
+    for (const x in arrs) {
+      if (arrs[x].id == e.detail.value) {
+        arrs[x].checked = true;
+      } else {
+        arrs[x].checked = false;
+      }
+    }
+    this.setData({
+      [`options[${this.data.cur_option_list_index}].list`]: arrs
+    })
+    this.getOptionListName()
+  },
+  getOptionListName: function() {
+    let arrs = this.data.options[this.data.cur_option_list_index].list
+    let option = arrs.find((item) => item.checked === true)
+    console.log(option)
+    this.setData({
+      [`options[${this.data.cur_option_list_index}].name`]: option.name
+    })
   }
 })

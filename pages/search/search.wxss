@@ -1,32 +1,89 @@
 /* pages/search/search.wxss */
 
 .main {
-  margin-top:160rpx;
+  margin-top: 160rpx;
   background-color: #fff;
 }
+
 .group {
   padding: 30rpx 30rpx 0 30rpx;
 }
+
 .group-title {
- font-size: 32rpx;
- font-weight: bold;
+  font-size: 32rpx;
+  font-weight: bold;
 }
+
 .options {
   top: 80rpx !important;
   background-color: #fff;
 }
 
 .option-list {
-  position: absolute;
+  position: fixed;
   width: 100%;
-  background-color: #fff;
-  top: 60rpx;
+  background-color: rgba(0, 0, 0, 0.7);
+  top: 155rpx;
   left: 0;
+  bottom:0;
 }
 .option-item {
-  display:flex;
-  justify-content: space-between;
+  position:relative;
 }
+
+.radio-list {
+  opacity: 1;
+  width: 100%;
+  background-color:#fff;
+}
+
+.radio-item {
+  text-align: right;
+  position: absolute;
+  top: 1rpx;
+  left: 30rpx;
+  right: 30rpx;
+  bottom: 1rpx;
+  display:flex;
+  justify-content: flex-end;
+  align-content: center;
+}
+
+/*
 .radio-item{
   display: block;
+}
+
+
+radio {
+  text-align: right;
+}
+*/
+
+radio .wx-radio-input {
+  border-radius: 50%;
+  width: 30rpx;
+  height: 30rpx;
+}
+
+radio .wx-radio-input.wx-radio-input-checked {
+  border-color: #f0302f !important;
+  background: #f0302f !important;
+}
+
+radio .wx-radio-input.wx-radio-input-checked::before {
+  border-radius: 50%;
+  width: 30rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  text-align: center;
+  font-size: 25rpx;
+  color: #fff;
+  background: transparent;
+  transform: translate(-50%, -50%) scale(1);
+  -webkit-transform: translate(-50%, -50%) scale(1);
+}
+
+radio::before {
+  right: 2rpx;
 }

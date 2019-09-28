@@ -27,10 +27,14 @@
           <!-- <view class="option-item padding-sm" wx:for="{{item.list}}" wx:for-item="option" wx:key="id">
           {{option.name}}
           </view> -->
-          <radio-group>
-            <radio wx:for-items="{{item.list}}" wx:for-item="option" wx:key="index" value="{{option.id}}" checked="{{option.checked}}" class="radio-item">
+          <radio-group class="radio-list" bindchange="selectOption">
+            <!-- <radio wx:for-items="{{item.list}}" wx:for-item="option" wx:key="index" value="{{option.id}}" checked="{{option.checked}}" class="radio-item">
               <text>{{option.name}}</text>
-            </radio>
+            </radio> -->
+            <view class="cu-form-group option-item" wx:for-items="{{item.list}}" wx:for-item="option" wx:key="index">
+              <view class="title">{{option.name}}</view>
+              <radio value="{{option.id}}" checked="{{option.checked}}" class="radio-item"></radio>
+            </view>
           </radio-group>
         </view>
       </view>
