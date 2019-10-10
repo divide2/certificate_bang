@@ -1,0 +1,21 @@
+<!--pages/course/course.wxml-->
+<scroll-view scroll-y class="scrollPage">
+  <swiper class="screen-swiper round-dot}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
+    <swiper-item wx:for="{{swiperList}}" wx:key>
+      <image src="{{item.url}}" mode="aspectFill"></image>
+    </swiper-item>
+  </swiper>
+  <view class="padding-sm bg-white">
+   <view class="padding-xs text-black text-bold text-xl">
+   <text>消防员课程</text>
+   </view>
+   <view class="padding-xs">
+   消防员课程，线下实践，学完就能救人消防员课程
+   </view>
+   <view class=""></view>
+   <!-- 商品详情 -->
+   <view class="padding-xs text-content">
+   <text>消防员课程，线下实践，学完就能救人消防员课程，线下实践，学完就能救人消防员课程，线下实践，学完就能救人消防员课程，线下实践，学完就能救人</text>
+   </view>
+  </view>
+</scroll-view>

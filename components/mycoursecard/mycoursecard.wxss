@@ -1,0 +1,60 @@
+/* components/mycoursecard/mycoursecard.wxss */
+
+.my-course-card {
+  background-color: #fff;
+  border-bottom: 1rpx solid #ddd;
+}
+
+.header {
+  line-height: 1;
+}
+
+.tip {
+  color: red;
+}
+
+.course-wrap {
+  margin-top: 10rpx;
+  display: flex;
+}
+
+.info {
+  flex: 1;
+  padding-left: 18rpx;
+}
+
+.name-wrap {
+  margin-bottom: 40rpx;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.image-wrap {
+  width: 260rpx;
+  height: 180rpx;
+  overflow: hidden;
+  border-radius: 16rpx;
+}
+
+.tag {
+  display: inline-block;
+  line-height: 1;
+  padding: 10rpx;
+  margin-right: 20rpx;
+  font-size: 24rpx;
+  color: #ff9800;
+  background-color: #f7ef9d;
+  border-radius: 8rpx;
+}
+
+.address-price {
+  margin-top: 20rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.price {
+  color: #c63333;
+}

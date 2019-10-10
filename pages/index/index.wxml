@@ -26,15 +26,15 @@
         <text>推荐</text>
       </view>
       <view class="group-content">
-        <view wx:for="{{courses}}" wx:key="index">
+        <view wx:for="{{courses}}" wx:key="index" bindtap="toCourse">
           <course-card class="course-card" course="{{item}}"></course-card>
         </view>
       </view>
     </view>
     <view>{{app}}</view>
   </view>
-  <!-- <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+  <view class="userinfo">
+    <button wx:if="{{hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
@@ -42,5 +42,5 @@
   </view>
   <view class="usermotto">
     <text class="user-motto black">{{motto}}</text>
-  </view> -->
+  </view>
 </view>

@@ -5,3 +5,6 @@
 .content-left{
   margin-left:10rpx;
 }
+.login-wrap{
+  height: 85rpx;
+}

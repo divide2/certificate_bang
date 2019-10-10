@@ -1,0 +1,60 @@
+<!--pages/login/login.wxml-->
+<scroll-view class="scrollPage">
+  <view class="padding">
+    <view wx:if="{{type==='default'}}">
+      <view class="text-center">
+        <text class="text-bold name block">证书帮</text>
+        <text class="margin-top block">学员登录为微信快捷登录</text>
+      </view>
+      <view class="margin-top">
+        <button class="cu-btn block bg-blue margin-tb-sm lg " bindtap="login">学员登录</button>
+        <button class="cu-btn block line-blue margin-tb-sm lg" bindtap="selectOra" data-organizationtype="login">机构登录</button>
+        <button class="cu-btn block bg-blue margin-tb-sm lg " bindtap="selectOra" data-organizationtype="signin">机构注册</button>
+      </view>
+    </view>
+    <form wx:elif="{{type==='login'}}" bindsubmit="orLogin">
+      <view class="cu-form-group">
+        <view class="title">账号</view>
+        <input placeholder="请输入机构名称" name="username"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">密码</view>
+        <input placeholder="请输入长度为八位的密码" name="password"></input>
+      </view>
+      <button class="cu-btn block bg-blue margin-top lg" wx:if="{{organizationType==='login'}}" formType="submit">登录</button>
+    </form>
+
+    <form wx:else bindsubmit="register">
+      <view class="cu-form-group">
+        <view class="title">账号</view>
+        <input placeholder="请输入机构名称" name="username"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">密码</view>
+        <input placeholder="请输入长度为八位的密码" name="password"></input>
+      </view>
+      <view class="cu-bar bg-white margin-top">
+        <view class="action">
+          营业执照
+        </view>
+        <view class="action">
+          只需一张即可
+        </view>
+      </view>
+      <view class="cu-form-group">
+        <view class="grid col-4 grid-square flex-sub">
+          <view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{imgList[index]}}">
+            <image src='{{imgList[index]}}' mode='aspectFill'></image>
+            <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+              <text class="cuIcon-close"></text>
+            </view>
+          </view>
+          <view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<4}}">
+            <text class="cuIcon-cameraadd"></text>
+          </view>
+        </view>
+      </view>
+      <button class="cu-btn block bg-blue margin-top lg" wx:if="{{organizationType==='signin'}}" formType="submit">注册</button>
+    </form>
+  </view>
+</scroll-view>

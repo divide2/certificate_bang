@@ -1,7 +1,9 @@
-// components/course-card/course-card.js
+// components/mycoursecard/mycoursecard.js
 Component({
+  externalClasses: ['my-class', 'text-bold','padding'],
   options: {
-    addGlobalClass: true
+    addGlobalClass: true,
+    multipleSlots: true
   },
   /**
    * 组件的属性列表

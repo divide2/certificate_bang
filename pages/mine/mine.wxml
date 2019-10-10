@@ -1,66 +1,76 @@
 <!--pages/mine/mine.wxml-->
 <scroll-view scroll-y class="scrollPage">
   <view class="radius shadow-warp bg-white">
+    <!-- <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 登录 </button> -->
+
     <view class="cu-list menu">
-      <view class="cu-item arrow margin-top margin-bottom">
+      <view class="cu-item arrow margin-top margin-bottom" bindtap="toLogin" wx:if="{{!hasUserInfo && canIUse}}">
+        <view class="login-wrap flex align-center">
+          <view>
+            <text class="text-bold text-lg">登录/注册</text>
+          </view>
+        </view>
+      </view>
+      <view class="cu-item arrow margin-top margin-bottom" wx:else>
         <view class="content flex align-center justify-between">
           <view class="content-left">
             <view>
               <view class="flex align-center">
-                <view class="cu-avatar xl round" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big99008.jpg);">
+                <view class="cu-avatar xl round" style="background-image:url({{userInfo.avatarUrl}});">
                 </view>
                 <view class="base-info margin-left">
                   <view>
-                    <text>name</text>
+                    <text class="text-bold">{{userInfo.nickName}}</text>
                   </view>
                   <text>xxxxxxxx</text>
                 </view>
               </view>
               <view class="flex margin-top">
                 <view>
-                 <text>关注</text>
-                 <text>12</text>
+                  <text class="margin-sm">关注</text>
+                  <text>12</text>
                 </view>
-                 <view class="margin-left">
-                 <text>粉丝</text>
-                 <text>12</text>
+                <view class="margin-left">
+                  <text class="margin-sm">粉丝</text>
+                  <text>12</text>
                 </view>
               </view>
             </view>
           </view>
           <text class="cuIcon-qr_code xl text-grey"></text>
         </view>
-
       </view>
     </view>
 
   </view>
-  <view class="cu-list menu margin-top">
-    <view class="cu-item arrow">
-      <view class="content">
-        <text class="cuIcon-goodsfill text-green"></text>
-        <text class="text-grey">我的课程</text>
+  <view>
+    <view class="cu-list menu margin-top">
+      <view class="cu-item arrow" bindtap="navigateTo" data-url="/pages/courselist/courselist">
+        <view class="content">
+          <text class="cuIcon-goodsfill text-green"></text>
+          <text class="text-grey">我的课程</text>
+        </view>
+      </view>
+      <view class="cu-item arrow">
+        <view class="content">
+          <text class="cuIcon-writefill text-cyan"></text>
+          <text class="text-grey">发表</text>
+        </view>
+      </view>
+      <view class="cu-item arrow" bindtap="navigateTo" data-url="/pages/publishcourse/publishcourse">
+        <view class="content">
+          <text class="cuIcon-formfill text-orange"></text>
+          <text class="text-grey">发布课程</text>
+        </view>
       </view>
     </view>
-    <view class="cu-item arrow">
-      <view class="content">
-        <text class="cuIcon-writefill text-cyan"></text>
-        <text class="text-grey">发表</text>
-      </view>
-    </view>
-    <view class="cu-item arrow">
-      <view class="content">
-        <text class="cuIcon-formfill text-orange"></text>
-        <text class="text-grey">发布课程</text>
-      </view>
-    </view>
-  </view>
 
-   <view class="cu-list menu margin-top">
-    <view class="cu-item arrow">
-      <view class="content">
-        <text class="cuIcon-settingsfill text-grey"></text>
-        <text class="text-grey">设置</text>
+    <view class="cu-list menu margin-top">
+      <view class="cu-item arrow">
+        <view class="content">
+          <text class="cuIcon-settingsfill text-grey"></text>
+          <text class="text-grey">设置</text>
+        </view>
       </view>
     </view>
   </view>

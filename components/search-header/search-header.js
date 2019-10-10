@@ -17,7 +17,7 @@ Component({
       console.log(this.properties.canGoToSearch)
       if (this.properties.canGoToSearch) {
         console.log(21)
-        wx.redirectTo({
+        wx.navigateTo({
           url: '/pages/search/search',
         })
       }

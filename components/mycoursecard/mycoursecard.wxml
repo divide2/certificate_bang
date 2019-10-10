@@ -1,0 +1,27 @@
+<!--components/mycoursecard/mycoursecard.wxml-->
+<view class="padding my-course-card">
+  <view class="my-class header">
+    <text class="text-bold">xddddx机构</text>
+    <text class="tip">请注意开始时间</text>
+  </view>
+  <view>
+  <view>
+  <text>课程时间: 2019.01.18 ~ 2019.05.20</text>
+  </view>
+  <view class="course-wrap">
+    <view class="image-wrap">
+      <image src="{{course.image}}"></image>
+    </view>
+    <view class="info">
+      <view class="name-wrap">
+        <text class="name">{{course.name}}</text>
+      </view>
+      <text wx:for="{{course.tags}}" wx:key="index" class="tag">{{item}}</text>
+      <view class="address-price">
+        <text class="address">{{course.address}}</text>
+        <text class="price">￥{{course.price}}</text>
+      </view>
+    </view>
+  </view>
+  </view>
+</view>
