@@ -1,6 +1,6 @@
 //app.js
 App({
-  onLaunch: function () {
+  onLaunch: function() {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -34,7 +34,27 @@ App({
     // })
   },
   globalData: {
-    userInfo: null,
-    accessToken: null
+    userInfor: null,
+    accessToken: null,
+    baseUrl: 'http://120.77.153.225:8080',
+    tabBar: [{
+      key: 'home',
+      name: '首页',
+      icon: 'home',
+      curIcon: 'homefill',
+      page: '/pages/index/index'
+    }, {
+      key: 'discover',
+      name: '发现',
+      icon: 'discover',
+      curIcon: 'discoverfill',
+      page: '/pages/index/index'
+    }, {
+      key: 'mine',
+      name: '我的',
+      icon: 'people',
+      curIcon: 'peoplefill',
+      page: '/pages/mine/mine'
+    }]
   }
 })

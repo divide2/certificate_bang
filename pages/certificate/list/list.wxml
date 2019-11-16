@@ -1,0 +1,29 @@
+<!--pages/certificatelist/certificatelist.wxml-->
+<scroll-view scroll-y class="scrollPage">
+  <view class="cu-list menu">
+    <view class="cu-item" style="padding: 30rpx;" wx:for="{{list}}" bindtap="chooseCer" data-item="{{item}}">
+      <view class="cu-avatar radius lg" style="background-image:url({{item.image}});"></view>
+      <view class="content margin-left-xs">
+        <view class="text-pink">
+          <text class="text-cut">{{item.name}}</text>
+        </view>
+        <view class="text-gray text-sm flex">
+          <text class="text-cut">发证机构：{{item.licensor}}</text>
+        </view>
+      </view>
+      <view class="action">
+        <button class="cu-btn icon" bindtap="toUpdateCer" data-id="{{item.id}}">
+          <text class="cuIcon-write"></text>
+        </button>
+        <button class="cu-btn icon margin-left-xs" bindtap="deleteCer" data-id="{{item.id}}">
+          <text class="cuIcon-delete"></text>
+        </button>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+<view class="bg-white shadow foot fixed" style="bottom:0;">
+  <view class="padding flex flex-direction" bindtap="toAddCer">
+    <button class="cu-btn bg-green lg">增加证书</button>
+  </view>
+</view>

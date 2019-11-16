@@ -2,9 +2,8 @@
 <scroll-view scroll-y class="scrollPage">
   <view class="radius shadow-warp bg-white">
     <!-- <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 登录 </button> -->
-
     <view class="cu-list menu">
-      <view class="cu-item arrow margin-top margin-bottom" bindtap="toLogin" wx:if="{{!hasUserInfo && canIUse}}">
+      <view class="cu-item arrow margin-top margin-bottom" bindtap="toLogin" wx:if="{{!hasUserInfo}}">
         <view class="login-wrap flex align-center">
           <view>
             <text class="text-bold text-lg">登录/注册</text>
@@ -45,7 +44,7 @@
   </view>
   <view>
     <view class="cu-list menu margin-top">
-      <view class="cu-item arrow" bindtap="navigateTo" data-url="/pages/courselist/courselist">
+      <view class="cu-item arrow" bindtap="navigateTo" data-url="/pages/course/list/list">
         <view class="content">
           <text class="cuIcon-goodsfill text-green"></text>
           <text class="text-grey">我的课程</text>
@@ -57,7 +56,7 @@
           <text class="text-grey">发表</text>
         </view>
       </view>
-      <view class="cu-item arrow" bindtap="navigateTo" data-url="/pages/publishcourse/publishcourse">
+      <view class="cu-item arrow" bindtap="navigateTo" data-url="/pages/course/add/add">
         <view class="content">
           <text class="cuIcon-formfill text-orange"></text>
           <text class="text-grey">发布课程</text>
@@ -73,5 +72,22 @@
         </view>
       </view>
     </view>
+    <view class="cu-list menu margin-top" bindtap="logout">
+      <view class="cu-item arrow">
+        <view class="content">
+          <text class="cuIcon-settingsfill text-grey"></text>
+          <text class="text-grey">退出</text>
+        </view>
+      </view>
+    </view>
   </view>
 </scroll-view>
+<view class="cu-bar tabbar bg-white shadow foot">
+  <view class="action" bindtap="navChange" wx:for="{{tabBar}}" wx:key="{{index}}" data-cur="{{item}}">
+    <view wx:if="{{pageCur===item.key}}" class="cuIcon-{{item.curIcon}} text-green">
+    </view>
+    <view wx:else class="cuIcon-{{item.icon}}">
+    </view>
+    <view class="{{pageCur===item.key?'text-green':'text-gray'}}">{{item.name}}</view>
+  </view>
+</view>

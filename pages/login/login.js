@@ -8,14 +8,20 @@ Page({
   data: {
     type: 'default',
     organizationType: '',
-    imgList: []
+    imgList: [],
+    backPage: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    console.log(options)
+    if (options.backPage) {
+      this.setData({
+        backPage: options.backPage + '?' + options.paramKey + '=' + options.paramValue
+      })
+    }
   },
 
   /**
@@ -83,23 +89,44 @@ Page({
         if (res.code) {
           //发起网络请求
           wx.request({
-            url: 'http://192.168.3.17:8080/v1/login/wechat',
+            url: app.globalData.baseUrl + '/v1/login/wechat',
             data: {
               code: res.code
             },
             method: "POST",
             success: function(res) {
-              app.globalData.accessToken = res.accessToken
+              wx.setStorageSync('accessToken', res.data.accessToken)
               wx.getUserInfo({
                 success: res => {
-                  app.globalData.userInfo = res.userInfo
-                  that.setData({
-                    userInfo: res.userInfo,
-                    hasUserInfo: true
+                  wx.request({
+                    url: app.globalData.baseUrl + '/v1/user/wechat',
+                    data: res.userInfo,
+                    header: {
+                      Authorization: 'Bearer ' + wx.getStorageSync('accessToken')
+                    },
+                    method: 'POST',
+                    success: function(res) {
+                      wx.request({
+                        url: app.globalData.baseUrl + '/v1/user',
+                        header: {
+                          Authorization: 'Bearer ' + wx.getStorageSync('accessToken')
+                        },
+                        method: 'GET',
+                        success: function(data) {
+                          console.log('mess:', data)
+                          app.globalData.userInfo = data.data
+                          console.log(app.globalData.userInfo)
+                          wx.setStorageSync('userInfo', data.data);
+                          wx.navigateBack({
+
+                          })
+                        }
+                      })
+                    }
                   })
                   // 返回上一页
-                  wx.navigateBack({
-                    delta: 1
+                  wx.navigateTo({
+                    url: that.data.backPage,
                   })
                 }
               })
@@ -123,21 +150,33 @@ Page({
     let data = e.detail.value
     data.license = this.data.imgList[0]
     wx.request({
-      url: 'http://192.168.3.17:8080/v1/reg',
+      url: app.globalData.baseUrl + '/v1/reg',
       data: data,
       method: "POST",
-      success: function (res) {
+      success: function(res) {
 
       }
     })
   },
   orLogin: function(e) {
+    let that = this
     wx.request({
-      url: 'http://192.168.3.17:8080/v1/login/org',
+      url: app.globalData.baseUrl + '/v1/login/org',
       data: e.detail.value,
       method: "POST",
-      success: function(res){
-
+      success: function(res) {
+        wx.setStorageSync('accessToken', res.data.accessToken)
+        //登录成功后跳转
+        if (!!that.data.backPage) {
+          // 返回上一页
+          wx.navigateTo({
+            url: that.data.backPage,
+          })
+        } else {
+          wx.navigateBack({
+            delta: 1
+          })
+        }
       }
     })
   },

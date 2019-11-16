@@ -33,6 +33,18 @@
         <view class="title">密码</view>
         <input placeholder="请输入长度为八位的密码" name="password"></input>
       </view>
+      <view class="cu-form-group">
+        <view class="title">联系人</view>
+        <input placeholder="请输入人姓名" name="contactUser"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">联系方式</view>
+        <input placeholder="请输入联系电话" name="contactWay"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">公司地址</view>
+        <input placeholder="请输入公司办公地址" name="address"></input>
+      </view>
       <view class="cu-bar bg-white margin-top">
         <view class="action">
           营业执照

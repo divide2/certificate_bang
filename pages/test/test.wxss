@@ -1,0 +1,5 @@
+/* pages/test/test.wxss */
+.lg-font{
+  font-size: 48rpx;
+  margin:10rpx;
+}

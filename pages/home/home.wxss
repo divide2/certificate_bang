@@ -1,0 +1,63 @@
+/* pages/home/home.wxss */
+.home {
+  background: #fff;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+.card-swiper {
+  height: 260rpx !important;
+}
+
+swiper-item {
+  padding: 20rpx 0rpx !important;
+}
+
+.icon-notification {
+  color: #8bc34a;
+}
+
+.plr-30 {
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+.group-title-line {
+   background-color: #FF5D5D;
+   display: inline-block;
+   width:10rpx;
+   height: 30rpx;
+   margin-right: 10rpx;
+   border-radius: 5rpx;
+}
+.groups .group-title {
+  font-weight: bold;
+  font-size: 30rpx;
+  padding: 20rpx 30rpx;
+  border-bottom: 1rpx solid #ddd;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+
+.groups .group-content .course-card {
+  border-bottom: 1rpx solid #ddd;
+}

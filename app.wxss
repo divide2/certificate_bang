@@ -3,6 +3,8 @@
 @import "colorui/main.wxss";
 @import "colorui/icon.wxss";
 @import "colorui/animation.wxss";
+
+@import "./wxParse/wxParse.wxss";
 .container {
   height: 100%;
   display: flex;

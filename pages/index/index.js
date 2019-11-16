@@ -4,48 +4,25 @@ const app = getApp()
 
 Page({
   data: {
-    app: app.globalData,
-    cardCur: 0,
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    swiperList: [{
-      id: 0,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg'
+    pageCur: 'home',
+    tabBar: [{
+      key: 'home',
+      name: '首页',
+      icon: 'home',
+      curIcon: 'homefill'
     }, {
-      id: 1,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84001.jpg',
+      key: 'discover',
+      name: '发现',
+      icon: 'discover',
+      curIcon: 'discoverfill'
     }, {
-      id: 2,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big39000.jpg'
-    }, {
-      id: 3,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg'
-    }, {
-      id: 4,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big25011.jpg'
+      key: 'mine',
+      name: '我的',
+      icon: 'people',
+      curIcon: 'peoplefill'
     }],
-    courses: [{
-      image: "https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg",
-      name: '消防员证书课程',
-      tags: ['有证书', '认证机构'],
-      address: '广东深圳',
-      price: '1000',
-      date: '2019-11-11'
-    }, {
-      image: "https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg",
-      name: '消防员证书课程',
-      tags: ['有证书', '认证机构'],
-      address: '广东深圳',
-      price: '1000',
-      date: '2019-11-11'
-    }]
+    hasUserInfo: false,
+    userInfo: {}
   },
   //事件处理函数
   bindViewTap: function() {
@@ -53,52 +30,26 @@ Page({
       url: '../logs/logs'
     })
   },
-  onLoad: function() {
-    console.log(app.globalData.userInfo)
-    // let that = this
-    // if (app.globalData.userInfo) {
-    //   this.setData({
-    //     userInfo: app.globalData.userInfo,
-    //     hasUserInfo: true
-    //   })
-    // } else if (this.data.canIUse) {
-    //   // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-    //   // 所以此处加入 callback 以防止这种情况
-    //   app.userInfoReadyCallback = res => {
-    //     this.setData({
-    //       userInfo: res.userInfo,
-    //       hasUserInfo: true
-    //     })
-    //   }
-    // } else {
-    //   // 在没有 open-type=getUserInfo 版本的兼容处理
-    //   wx.getUserInfo({
-    //     success: res => {
-    //       app.globalData.userInfo = res.userInfo
-    //       this.setData({
-    //         userInfo: res.userInfo,
-    //         hasUserInfo: true
-    //       })
-    //     }
-    //   })
-    // }
+  onLoad: function(options) {
+    console.log(111111111)
+    console.log(options)
+    if(options.curPage){
+      this.setData({
+        pageCur: options.curPage
+      })
+      console.log(this.data.curPage)
+    }
+    let info = wx.getStorageSync('userInfo')
+    if (info) {
+      this.setData({
+        userInfo:info,
+        hasUserInfo: true
+      })
+    }
   },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
+  navChange: function(e) {
     this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  },
-  cardSwiper(e) {
-    this.setData({
-      cardCur: e.detail.current
-    })
-  },
-  toCourse() {
-    wx.navigateTo({
-      url: '/pages/course/course',
+      pageCur: e.currentTarget.dataset.cur.key
     })
   }
 })

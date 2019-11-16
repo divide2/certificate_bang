@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "usingComponents": {
+    "search-header": "/components/search-header/search-header",
+    "notice-board": "/components/notice-board/notice-board",
+    "course-card": "/components/course-card/course-card",
+    "test": "/components/test/test",
+    "find": "/pages/find/find"
+  }
+}
