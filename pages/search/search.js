@@ -1,4 +1,5 @@
 // pages/search/search.js
+import api from '../../api/api'
 Page({
 
   /**
@@ -99,7 +100,11 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-
+    api.get('/v1/courses').then(data => {
+      this.setData({
+        courses: data.content
+      })
+    })
   },
 
   /**
