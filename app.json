@@ -20,8 +20,8 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F0151D",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarTitleText": "证书帮",
+    "navigationBarTextStyle": "white"
   },
   "sitemapLocation": "sitemap.json",
   "permission": {
