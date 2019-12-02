@@ -21,6 +21,14 @@ Component({
           url: '/pages/search/search',
         })
       }
+    },
+    chooseAddress() {
+      wx.navigateTo({
+        url: '/pages/address/citys/citys',
+      })
     }
+  },
+  attached() {
+    console.log(11)
   }
 })

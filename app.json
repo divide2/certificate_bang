@@ -12,7 +12,10 @@
     "pages/course/detail/detail",
     "pages/test/test",
     "pages/editor/editor",
-    "pages/classAddress/classAddress"
+    "pages/classAddress/classAddress",
+    "pages/course/orgcourse/orgcourse",
+    "pages/address/list/list",
+    "pages/address/citys/citys"
   ],
   "window": {
     "backgroundTextStyle": "light",

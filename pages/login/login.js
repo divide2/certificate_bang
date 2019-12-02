@@ -1,5 +1,6 @@
 // pages/login/login.js
 const app = getApp()
+import api from '../../api/api.js'
 Page({
 
   /**
@@ -166,6 +167,11 @@ Page({
       method: "POST",
       success: function(res) {
         wx.setStorageSync('accessToken', res.data.accessToken)
+        api.get('/v1/user').then(data=>{
+          app.globalData.userInfo = data
+          console.log(app.globalData.userInfo)
+          wx.setStorageSync('userInfo', data)
+        })
         //登录成功后跳转
         if (!!that.data.backPage) {
           // 返回上一页

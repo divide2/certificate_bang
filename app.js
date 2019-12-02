@@ -1,10 +1,43 @@
 //app.js
+import api from './api/api.js'
 App({
   onLaunch: function() {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
+    wx.getLocation({
+      type: 'gcj02',
+      success: function (res) {
+        const latitude = res.latitude
+        const longitude = res.longitude
+        api.get('/v1/address/city/resolve', { latitude: latitude, longitude: longitude }).then(res => {
+          console.log(res)
+        })
+      }
+    })
+    wx.getSetting({
+      success(res) {
+        if (!res.authSetting['scope.userInfo']) {
+          wx.authorize({
+            scope: 'scope.userInfo',
+            success() {
+              // 用户同意之后可以获取经纬度
+              wx.getLocation({
+                type: 'gcj02',
+                success: function (res) {
+                  const latitude = res.latitude
+                  const longitude = res.longitude
+                  api.get('/v1/address/city/resolve',{latitude:latitude,longitude:longitude}).then(res=>{
+                    wx.setStorageSync('curCity', res.city)
+                  })
+                }
+              })
+            }
+          })
+        }
+      }
+    })
 
     // 登录
     // wx.login({

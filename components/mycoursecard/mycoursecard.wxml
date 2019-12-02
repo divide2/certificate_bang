@@ -6,11 +6,11 @@
   </view>
   <view>
   <view>
-  <text>课程时间: 2019.01.18 ~ 2019.05.20</text>
+  <text>课程时间: {{course.startTime}} ~ {{course.endTime}}</text>
   </view>
   <view class="course-wrap">
     <view class="image-wrap">
-      <image src="{{course.image}}"></image>
+      <image src="{{course.images[0]}}"></image>
     </view>
     <view class="info">
       <view class="name-wrap">

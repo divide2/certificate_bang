@@ -16,11 +16,12 @@ Page({
     profession: '',
     professionPickerIndex: null,
     editorContent: '',
-    address:{
-      address: '',
-      latitude: '',
-      longitude: ''
-    }
+    // address:{
+    //   address: '',
+    //   latitude: '',
+    //   longitude: ''
+    // },
+    details:'' // 課程詳情
   },
 
   /**
@@ -87,7 +88,7 @@ Page({
   },
   professionChange(e) {
     this.setData({
-        index: e.detail.value
+      professionPickerIndex: e.detail.value
     })
   },
   ChooseImage() {
@@ -134,13 +135,13 @@ Page({
     console.log(e)
   },
   confirm(e) {
-    debugger
     let obj = e.detail.value
-    obj.imgs = this.data.imgList
-    // 测试数据
-    obj.professionId = 
-    obj.streets = 1
+    obj.images = this.data.imgList
+    obj.professionId = this.data.professionPicker[this.data.professionPickerIndex].id
     obj.certificateId = this.data.certificate.id
+    // 課程詳情
+    obj.details = this.data.details
+    obj.price = parseFloat(obj.price)
     wx.request({
       url: app.globalData.baseUrl + '/v1/org/courses',
       data: obj,
@@ -174,13 +175,17 @@ Page({
     })
   },
   chooseAddress() {
-    let that = this
-    wx.chooseLocation({
-      success: function (res) {
-        that.setData({
-          address: res
-        })
-      },
+    // let that = this
+    // wx.chooseLocation({
+    //   success: function (res) {
+    //     that.setData({
+    //       address: res
+    //     })
+    //   },
+    // })
+    // 跳转去地址管理
+    wx.navigateTo({
+      url: 'pages/address/list/list'
     })
   }
 })

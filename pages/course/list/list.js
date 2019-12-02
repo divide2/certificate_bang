@@ -1,4 +1,5 @@
 // pages/courselist/courselist.js
+import api from '../../../api/api.js'
 Page({
 
   /**
@@ -51,7 +52,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    this.getData()
   },
 
   /**
@@ -107,6 +108,15 @@ Page({
     this.setData({
       tabCur: e.currentTarget.dataset.id,
       scrollLeft: (e.currentTarget.dataset.id - 1) * 60
+    })
+    this.getData()
+  },
+  getData() {
+    // todo 需要加上参数
+    api.get('/v1/user/joined').then(data=>{
+      this.setData({
+        courses: data.content
+      })
     })
   }
 })
