@@ -1,5 +1,6 @@
 // pages/search/search.js
 import api from '../../api/api'
+
 Page({
 
   /**
@@ -12,40 +13,40 @@ Page({
     is_certificate_fold: false,
     // todo 调整这里
     options: [{
-        name: '行业选择',
-        fold: false,
-        list: [{
-          checked: 'true',
-          name: '全部',
-          id: 0
-        }, {
-          name: '户外登山',
-          id: 1
-        }, {
-          name: '医疗急救',
-          id: 2
-        }, {
-          name: '救援技能',
-          id: 3
-        }, {
-          name: '社区街道',
-          id: 4
-        }]
+      name: '行业选择',
+      fold: false,
+      list: [{
+        checked: 'true',
+        name: '全部',
+        id: 0
       }, {
-        name: '费用选择',
-        fold: false,
-        list: [{
-          checked: 'true',
-          name: '全部',
-          id: 0
-        }, {
-          name: '免费',
-          id: 1
-        }, {
-          name: '收费',
-          id: 2
-        }]
-      },
+        name: '户外登山',
+        id: 1
+      }, {
+        name: '医疗急救',
+        id: 2
+      }, {
+        name: '救援技能',
+        id: 3
+      }, {
+        name: '社区街道',
+        id: 4
+      }]
+    }, {
+      name: '费用选择',
+      fold: false,
+      list: [{
+        checked: 'true',
+        name: '全部',
+        id: 0
+      }, {
+        name: '免费',
+        id: 1
+      }, {
+        name: '收费',
+        id: 2
+      }]
+    },
       {
         name: '证书选择',
         fold: false,
@@ -164,9 +165,9 @@ Page({
     let arrs = this.data.options[this.data.cur_option_list_index].list
     for (const x in arrs) {
       if (arrs[x].id == e.detail.value) {
-        arrs[x].checked = true;
+        arrs[x].checked = true
       } else {
-        arrs[x].checked = false;
+        arrs[x].checked = false
       }
     }
     this.setData({
@@ -183,7 +184,9 @@ Page({
     })
   },
   toDetail(e) {
-
+    wx.navigateTo(
+      { url: `/pages/course/detail/detail?id=${e.currentTarget.id}` }
+    )
   }
 
 })

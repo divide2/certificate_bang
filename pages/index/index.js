@@ -12,7 +12,7 @@ Page({
       curIcon: 'homefill'
     }, {
       key: 'discover',
-      name: '发现',
+      name: '课程',
       icon: 'discover',
       curIcon: 'discoverfill'
     }, {

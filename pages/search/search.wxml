@@ -36,8 +36,8 @@
   </view>
   <scroll-view>
     <view>
-      <view wx:for="{{courses}}" wx:key="index">
-        <course-card class="course-card" course="{{item}}" bindtap="toDetail"></course-card>
+      <view wx:for="{{courses}}" wx:key="id" id="{{item.id}}">
+        <course-card class="course-card" course="{{item}}" id="{{item.id}}" bindtap="toDetail"></course-card>
       </view>
     </view>
   </scroll-view>
