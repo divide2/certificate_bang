@@ -24,13 +24,7 @@
         <text class="cuIcon-unfold" wx:if="{{!item.fold}}"></text>
         <text class="cuIcon-fold" wx:if="{{item.fold}}"></text>
         <view class="option-list" wx:if="{{item.fold}}">
-          <!-- <view class="option-item padding-sm" wx:for="{{item.list}}" wx:for-item="option" wx:key="id">
-          {{option.name}}
-          </view> -->
           <radio-group class="radio-list" bindchange="selectOption">
-            <!-- <radio wx:for-items="{{item.list}}" wx:for-item="option" wx:key="index" value="{{option.id}}" checked="{{option.checked}}" class="radio-item">
-              <text>{{option.name}}</text>
-            </radio> -->
             <view class="cu-form-group option-item" wx:for-items="{{item.list}}" wx:for-item="option" wx:key="index">
               <view class="title">{{option.name}}</view>
               <radio value="{{option.id}}" checked="{{option.checked}}" class="radio-item"></radio>
@@ -43,8 +37,6 @@
   <scroll-view>
     <view>
       <view wx:for="{{courses}}" wx:key="index">
-        <course-card class="course-card" course="{{item}}"></course-card>
-        <course-card class="course-card" course="{{item}}"></course-card>
         <course-card class="course-card" course="{{item}}"></course-card>
       </view>
     </view>

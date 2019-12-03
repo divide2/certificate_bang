@@ -1,6 +1,6 @@
 <!--pages/home/home.wxml-->
 <view class="container home">
-  <search-header canGoToSearch="{{true}}"></search-header>
+  <search-header canGoToSearch="{{true}}" showLocation="{{true}}"></search-header>
 
   <!-- 轮播图 -->
   <swiper class="card-swiper round-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff">

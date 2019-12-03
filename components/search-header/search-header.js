@@ -6,6 +6,10 @@ Component({
     canGoToSearch: {
       type: Boolean,
       value: false
+    },
+    showLocation: {
+      type: Boolean,
+      value: false
     }
   },
   data: {
