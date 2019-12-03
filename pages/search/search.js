@@ -6,24 +6,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    courses: [{
-      image: "https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg",
-      name: '消防员证书课程',
-      tags: ['有证书', '认证机构'],
-      address: '广东深圳',
-      price: '1000',
-      date: '2019-11-11'
-    }, {
-      image: "https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg",
-      name: '消防员证书课程',
-      tags: ['有证书', '认证机构'],
-      address: '广东深圳',
-      price: '1000',
-      date: '2019-11-11'
-    }],
+    courses: [],
     is_industy_fold: false,
     is_time_fold: false,
     is_certificate_fold: false,
+    // todo 调整这里
     options: [{
         name: '行业选择',
         fold: false,
@@ -194,5 +181,9 @@ Page({
     this.setData({
       [`options[${this.data.cur_option_list_index}].name`]: option.name
     })
+  },
+  toDetail(e) {
+
   }
+
 })

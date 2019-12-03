@@ -37,7 +37,7 @@
   <scroll-view>
     <view>
       <view wx:for="{{courses}}" wx:key="index">
-        <course-card class="course-card" course="{{item}}"></course-card>
+        <course-card class="course-card" course="{{item}}" bindtap="toDetail"></course-card>
       </view>
     </view>
   </scroll-view>
