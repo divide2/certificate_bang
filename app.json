@@ -15,7 +15,8 @@
     "pages/classAddress/classAddress",
     "pages/course/orgcourse/orgcourse",
     "pages/address/list/list",
-    "pages/address/citys/citys"
+    "pages/address/citys/citys",
+    "pages/address/add/add"
   ],
   "window": {
     "backgroundTextStyle": "light",

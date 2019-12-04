@@ -23,6 +23,7 @@ Page({
     })
     api.get('/v1/address/cities').then(data=>{
       console.log(data)
+      // todo 数据暂时不对，再搞显示
     })
   },
 

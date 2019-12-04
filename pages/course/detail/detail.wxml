@@ -10,7 +10,7 @@
    <text>{{course.name}}</text>
    </view>
    <view class="padding-xs">
-   {{course.description}}
+   {{course.details}}
    </view>
    <view class=""></view>
    <!-- 商品详情 -->

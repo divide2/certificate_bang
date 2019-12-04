@@ -1,0 +1,15 @@
+<!--pages/address/add/add.wxml-->
+<!--pages/certificate/add/add.wxml-->
+<form bindsubmit="confirm">
+  <view class="cu-form-group" bindtap="chooseAddress">
+      <view class="title">地址选择</view>
+      <input placeholder="必填" name="address" value="{{addressObj.address}}"></input>
+    </view>
+     <view class="cu-form-group">
+      <view class="title">地址补充</view>
+      <input placeholder="必填" name="detail" value="{{addressObj.detail}}" data-obj="addressObj" bindinput="inputAddress" data-key="detail"></input>
+    </view>
+  <view class="cu-bar btn-group margin-top margin-bottom">
+    <button class="cu-btn bg-green shadow-blur round lg" formType="submit">保存</button>
+  </view>
+</form>

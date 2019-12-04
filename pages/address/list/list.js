@@ -1,18 +1,18 @@
 // pages/address/list/list.js
+import api from '../../../api/api.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    list:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
   },
 
   /**
@@ -26,7 +26,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getData()
   },
 
   /**
@@ -62,5 +62,39 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  toAddAddress() {
+    wx.navigateTo({
+      url: '/pages/address/add/add?type=add',
+    })
+  },
+  getData() {
+    api.get('/v1/org/addresses').then(data => {
+      this.setData({
+        list:data
+      })
+    })
+  },
+  toUpdateAddress(e) {
+    wx.navigateTo({
+      url: `/pages/address/add/add?type=update&id=${e.currentTarget.dataset.id}`,
+    })
+  },
+  deleteAddress(e) {
+    api.remove(`/v1/address/${e.currentTarget.dataset.id}`).then(()=>{
+      this.getData()
+    })
+  },
+  chooseAddress(e) {
+    let pages = getCurrentPages()
+    let prevPage = pages[pages.length - 2]
+    prevPage.setData({
+      ['course.addressName']: e.currentTarget.dataset.item.address,
+      ['course.addressId']: e.currentTarget.dataset.item.id
+    }, function () {
+      wx.navigateBack({
+        delta: 1
+      })
+    })
   }
 })

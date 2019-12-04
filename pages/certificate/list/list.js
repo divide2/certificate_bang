@@ -91,7 +91,8 @@ Page({
     let pages = getCurrentPages()
     let prevPage=pages[pages.length-2]
     prevPage.setData({
-      certificate: e.currentTarget.dataset.item
+      ['course.certificateName']: e.currentTarget.dataset.item.name,
+      ['course.certificateId']: e.currentTarget.dataset.item.id
     },function(){
       wx.navigateBack({
         delta: 1

@@ -1,2 +1,25 @@
 <!--pages/address/list/list.wxml-->
-<text>pages/address/list/list.wxml</text>
+<scroll-view scroll-y class="scrollPage">
+  <view class="cu-list menu">
+    <view class="cu-item" style="padding: 30rpx;" wx:for="{{list}}" bindtap="chooseAddress" data-item="{{item}}">
+      <view class="content margin-left-xs">
+        <view class="text-pink">
+          <text class="text-cut">{{item.address}}</text>
+        </view>
+      </view>
+      <view class="action">
+        <button class="cu-btn icon" bindtap="toUpdateAddress" data-id="{{item.id}}">
+          <text class="cuIcon-write"></text>
+        </button>
+        <button class="cu-btn icon margin-left-xs" bindtap="deleteAddress" data-id="{{item.id}}">
+          <text class="cuIcon-delete"></text>
+        </button>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+<view class="bg-white shadow foot fixed" style="bottom:0;">
+  <view class="padding flex flex-direction" bindtap="toAddAddress">
+    <button class="cu-btn bg-green lg">增加地址</button>
+  </view>
+</view>

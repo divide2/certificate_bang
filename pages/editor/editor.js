@@ -140,7 +140,7 @@ Page({
     this.editorCtx.getContents({
       success: function(res) {
         prevPage.setData({
-          editorContent: res.html
+          ['course.details']: res.html
         },function() {
           wx.navigateBack({
             delta: 1

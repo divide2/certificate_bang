@@ -3,11 +3,11 @@
   <form bindsubmit="confirm">
     <view class="cu-form-group margin-top">
       <view class="title">课程名字</view>
-      <input placeholder="必填" name="name"></input>
+      <input placeholder="必填" name="name" value="{{course.name}}" bindinput="inputCourse" data-key="name"></input>
     </view>
     <view class="cu-form-group">
       <view class="title">培训价格</view>
-      <input placeholder="必填" name="price" type="number"></input>
+      <input placeholder="必填" name="price" type="number" value="{{course.price}}" bindinput="inputCourse" data-key="price"></input>
     </view>
     <!-- <view class="cu-form-group" bindtap="chooseAddress">
       <view class="title">地址选择</view>
@@ -19,35 +19,35 @@
     </view> -->
       <view class="cu-form-group margin-top" bindtap="chooseAddress">
       <view class="title">上课地址</view>
-      <input placeholder="必填" name="name"></input>
+      <input placeholder="必填" value="{{course.addressName}}"></input>
     </view>
 
  <view class="cu-form-group">
       <view class="title">課程描述</view>
-      <input placeholder="必填" name="description"></input>
+      <input placeholder="必填" name="description" value="{{course.description}}" bindinput="inputCourse" data-key="description"></input>
     </view>
 
     <view class="cu-form-group margin-top">
       <view class="title">行业选择</view>
       <picker bindchange="professionChange" value="{{professionPickerIndex}}" range="{{professionPicker}}" name="profession" range-key="name">
         <view class="picker">
-          {{professionPicker[professionPickerIndex].name?professionPicker[professionPickerIndex].name:'未选择'}}
+          {{course.professionName?course.professionName:'未选择'}}
         </view>
       </picker>
     </view>
     <view class="cu-form-group">
       <view class="title">开始日期</view>
-      <picker mode="date" value="{{startTime}}" start="2015-09-01" end="2020-09-01" bindchange="startTimeChange" name="startTime">
+      <picker mode="date" value="{{course.startTime}}" start="2015-09-01" end="2020-09-01" bindchange="startTimeChange" name="startTime">
         <view class="picker">
-          {{startTime?startTime:'未选择'}}
+          {{course.startTime?course.startTime:'未选择'}}
         </view>
       </picker>
     </view>
     <view class="cu-form-group">
       <view class="title">结束日期</view>
-      <picker mode="date" value="{{startTime}}" start="2015-09-01" end="2020-09-01" bindchange="endTimeChange" name="endTime">
+      <picker mode="date" value="{{course.startTime}}" start="2015-09-01" end="2020-09-01" bindchange="endTimeChange" name="endTime">
         <view class="picker">
-          {{endTime?endTime:'未选择'}}
+          {{course.endTime?course.endTime:'未选择'}}
         </view>
       </picker>
     </view>
@@ -57,7 +57,7 @@
         <view class="content">
           <text class="">证书选择</text>
         </view>
-        <view class="action">{{certificate.name}}</view>
+        <view class="action">{{course.certificateName}}</view>
       </view>
     </view>
 
@@ -66,7 +66,7 @@
         <view class="content">
           <text class="">课程详情</text>
         </view>
-          <view class="action">{{editorContent?'有':'无'}}</view>
+          <view class="action">{{course.details?'有':'无'}}</view>
       </view>
    </view>
 
@@ -81,13 +81,13 @@
     
     <view class="cu-form-group">
       <view class="grid col-4 grid-square flex-sub">
-        <view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{imgList[index]}}">
-          <image src='{{imgList[index]}}' mode='aspectFill'></image>
+        <view class="bg-img" wx:for="{{course.images}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{course.images[index]}}">
+          <image src='{{course.images[index]}}' mode='aspectFill'></image>
           <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
             <text class="cuIcon-close"></text>
           </view>
         </view>
-        <view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<4}}">
+        <view class="solids" bindtap="ChooseImage" wx:if="{{course.images.length<4}}">
           <text class="cuIcon-cameraadd"></text>
         </view>
       </view>

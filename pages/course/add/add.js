@@ -7,21 +7,22 @@ Page({
    */
   data: {
     professionPicker: [],
-    region: ['广东省', '深圳市', '南山区'],
-    imgList: [],
-    certificatePicker: ['无', '医疗急救', '救援技能', '社区街道'],
-    startTime: "",
-    endTime: "",
-    certificate: {name: ''},
-    profession: '',
-    professionPickerIndex: null,
-    editorContent: '',
-    // address:{
-    //   address: '',
-    //   latitude: '',
-    //   longitude: ''
-    // },
-    details:'' // 課程詳情
+    course:{
+      name: '', // 名字
+      price: '', // 价格
+      addressName: '', // 地址名字
+      addressId: '', // 地址id
+      description: '', // 课程描述
+      startTime: '', // 开始时间
+      endTime: '', // 结束时间
+      certificateId: '', // 证书id
+      certificateName: '', // 证书名字
+      arrangement: '', //buzhi
+      images: [], // 图片
+      details: '', // 图文描述
+      professionId: '', // 行业id
+      professionName: '' // 行业名字
+    },
   },
 
   /**
@@ -88,7 +89,8 @@ Page({
   },
   professionChange(e) {
     this.setData({
-      professionPickerIndex: e.detail.value
+      ['course.professionName']: this.data.professionPicker[e.detail.value].name,
+      ['course.professionId']: this.data.professionPicker[e.detail.value].id
     })
   },
   ChooseImage() {
@@ -97,13 +99,13 @@ Page({
       sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album'], //从相册选择
       success: (res) => {
-        if (this.data.imgList.length != 0) {
+        if (this.data.course.images.length != 0) {
           this.setData({
-            imgList: this.data.imgList.concat(res.tempFilePaths)
+            ['course.images']: this.data.course.images.concat(res.tempFilePaths)
           })
         } else {
           this.setData({
-            imgList: res.tempFilePaths
+            ['course.images']: res.tempFilePaths
           })
         }
       }
@@ -111,7 +113,7 @@ Page({
   },
   ViewImage(e) {
     wx.previewImage({
-      urls: this.data.imgList,
+      urls: this.data.course.images,
       current: e.currentTarget.dataset.url
     });
   },
@@ -123,28 +125,18 @@ Page({
       confirmText: '再见',
       success: res => {
         if (res.confirm) {
-          this.data.imgList.splice(e.currentTarget.dataset.index, 1);
+          this.data.course.images.splice(e.currentTarget.dataset.index, 1);
           this.setData({
-            imgList: this.data.imgList
+            ['course.images']: this.data.course.images
           })
         }
       }
     })
   },
-  certificateChange(e) {
-    console.log(e)
-  },
   confirm(e) {
-    let obj = e.detail.value
-    obj.images = this.data.imgList
-    obj.professionId = this.data.professionPicker[this.data.professionPickerIndex].id
-    obj.certificateId = this.data.certificate.id
-    // 課程詳情
-    obj.details = this.data.details
-    obj.price = parseFloat(obj.price)
     wx.request({
       url: app.globalData.baseUrl + '/v1/org/courses',
-      data: obj,
+      data: this.data.course,
       method: 'POST',
       header: {
         Authorization: 'Bearer ' + wx.getStorageSync('accessToken')
@@ -156,12 +148,12 @@ Page({
   },
   startTimeChange(e) {
     this.setData({
-      startTime: e.detail.value
+      ['course.startTime']: e.detail.value
     })
   },
   endTimeChange(e) {
     this.setData({
-      endTime: e.detail.value
+      ['course.endTime']: e.detail.value
     })
   },
   toCer() {
@@ -185,7 +177,14 @@ Page({
     // })
     // 跳转去地址管理
     wx.navigateTo({
-      url: 'pages/address/list/list'
+      url: '/pages/address/list/list'
+    })
+  },
+  inputCourse(e) {
+    console.log(`course.${e.currentTarget.dataset.key}`)
+    console.log(e.detail.value)
+    this.setData({
+      [`course.${e.currentTarget.dataset.key}`]: e.detail.value
     })
   }
 })
