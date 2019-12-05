@@ -11,8 +11,13 @@ Page({
       icon: 'home',
       curIcon: 'homefill'
     }, {
-      key: 'discover',
+      key: 'search',
       name: '课程',
+      icon: 'activity',
+      curIcon: 'activityfill'
+    }, {
+      key: 'discover',
+      name: '发现',
       icon: 'discover',
       curIcon: 'discoverfill'
     }, {
@@ -25,29 +30,26 @@ Page({
     userInfo: {}
   },
   //事件处理函数
-  bindViewTap: function() {
+  bindViewTap: function () {
     wx.navigateTo({
       url: '../logs/logs'
     })
   },
-  onLoad: function(options) {
-    console.log(111111111)
-    console.log(options)
-    if(options.curPage){
+  onLoad: function (options) {
+    if (options.curPage) {
       this.setData({
         pageCur: options.curPage
       })
-      console.log(this.data.curPage)
     }
     let info = wx.getStorageSync('userInfo')
     if (info) {
       this.setData({
-        userInfo:info,
+        userInfo: info,
         hasUserInfo: true
       })
     }
   },
-  navChange: function(e) {
+  navChange: function (e) {
     this.setData({
       pageCur: e.currentTarget.dataset.cur.key
     })
