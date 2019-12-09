@@ -13,15 +13,22 @@ const request = (url, options) => {
         console.log(req)
         if (req.statusCode >= 200 && req.statusCode < 300) {
           resolve(req.data)
+          return
         } else if (req.statusCode===403) {
           //token过期需重新登录
           wx.navigateTo({
             url: '/pages/login/login'
           })
+          reject(req)
+        } else{
+          reject(req)
         }
+        
       },
       fail(error) {
+        reject(error)
        // todo 报错信息
+       console.error(error)
       }
     })
   })

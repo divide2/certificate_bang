@@ -93,6 +93,9 @@ Page({
               code: res.code
             },
             method: "POST",
+            fail() {
+console.log('xxx')
+            },
             success: function(res) {
               wx.setStorageSync('accessToken', res.data.accessToken)
               wx.getUserInfo({
