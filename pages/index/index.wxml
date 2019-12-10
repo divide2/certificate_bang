@@ -1,6 +1,7 @@
 <!--index.wxml-->
 <home wx:if="{{pageCur==='home'}}"></home>
 <mine wx:if="{{pageCur==='mine'}}" userInfo="{{userInfo}}" hasUserInfo="{{hasUserInfo}}"></mine>
+<course wx:if="{{pageCur==='course'}}"></course>
 <view class="cu-bar tabbar bg-white shadow foot">
   <view class="action" bindtap="navChange" wx:for="{{tabBar}}" wx:key="{{index}}" data-cur="{{item}}">
     <view wx:if="{{pageCur===item.key}}" class="cuIcon-{{item.curIcon}} text-green">

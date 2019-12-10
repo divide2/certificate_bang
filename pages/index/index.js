@@ -11,7 +11,7 @@ Page({
       icon: 'home',
       curIcon: 'homefill'
     }, {
-      key: 'search',
+      key: 'course',
       name: '课程',
       icon: 'activity',
       curIcon: 'activityfill'

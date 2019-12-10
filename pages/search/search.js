@@ -1,8 +1,12 @@
 // pages/search/search.js
 import api from '../../api/api'
 
-Page({
+Component({
 
+  options: {
+    addGlobalClass: true,
+    multipleSlots: true
+  },
   /**
    * 页面的初始数据
    */
@@ -77,116 +81,65 @@ Page({
     }]
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function(options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
+  ready() {
     api.get('/v1/courses').then(data => {
       this.setData({
         courses: data.content
       })
     })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
-  },
-  /**
-   * 点击过滤条件
-   */
-  clickOption: function(e) {
-    let index = e.currentTarget.dataset.index
-    if (this.data.cur_option_list_index || this.data.cur_option_list_index === 0) { // 正打开其他option_list
-      if (this.data.cur_option_list_index === index) { // 点击当前option_list
-        this.setData({ // 关闭当前option_list
-          [`options[${this.data.cur_option_list_index}].fold`]: false,
-          cur_option_list_index: null
-        })
-      } else { // 点击其他option_list
+  methods: {
+    /**
+     * 点击过滤条件
+     */
+    clickOption: function(e) {
+      let index = e.currentTarget.dataset.index
+      if (this.data.cur_option_list_index || this.data.cur_option_list_index === 0) { // 正打开其他option_list
+        if (this.data.cur_option_list_index === index) { // 点击当前option_list
+          this.setData({ // 关闭当前option_list
+            [`options[${this.data.cur_option_list_index}].fold`]: false,
+            cur_option_list_index: null
+          })
+        } else { // 点击其他option_list
+          this.setData({
+            [`options[${this.data.cur_option_list_index}].fold`]: false,
+            cur_option_list_index: index,
+            [`options[${index}].fold`]: true
+          })
+        }
+      } else { // 新打开option_list
         this.setData({
-          [`options[${this.data.cur_option_list_index}].fold`]: false,
           cur_option_list_index: index,
           [`options[${index}].fold`]: true
         })
       }
-    } else { // 新打开option_list
-      this.setData({
-        cur_option_list_index: index,
-        [`options[${index}].fold`]: true
-      })
-    }
-  },
-  selectOption: function(e) {
-    let arrs = this.data.options[this.data.cur_option_list_index].list
-    for (const x in arrs) {
-      if (arrs[x].id == e.detail.value) {
-        arrs[x].checked = true
-      } else {
-        arrs[x].checked = false
+    },
+    selectOption: function(e) {
+      let arrs = this.data.options[this.data.cur_option_list_index].list
+      for (const x in arrs) {
+        if (arrs[x].id == e.detail.value) {
+          arrs[x].checked = true
+        } else {
+          arrs[x].checked = false
+        }
       }
+      this.setData({
+        [`options[${this.data.cur_option_list_index}].list`]: arrs
+      })
+      this.getOptionListName()
+    },
+    getOptionListName: function() {
+      let arrs = this.data.options[this.data.cur_option_list_index].list
+      let option = arrs.find((item) => item.checked === true)
+      console.log(option)
+      this.setData({
+        [`options[${this.data.cur_option_list_index}].name`]: option.name
+      })
+    },
+    toDetail(e) {
+      wx.navigateTo(
+        { url: `/pages/course/detail/detail?id=${e.currentTarget.id}` }
+      )
     }
-    this.setData({
-      [`options[${this.data.cur_option_list_index}].list`]: arrs
-    })
-    this.getOptionListName()
-  },
-  getOptionListName: function() {
-    let arrs = this.data.options[this.data.cur_option_list_index].list
-    let option = arrs.find((item) => item.checked === true)
-    console.log(option)
-    this.setData({
-      [`options[${this.data.cur_option_list_index}].name`]: option.name
-    })
-  },
-  toDetail(e) {
-    wx.navigateTo(
-      { url: `/pages/course/detail/detail?id=${e.currentTarget.id}` }
-    )
   }
-
 })
