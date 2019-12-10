@@ -1,6 +1,6 @@
 // pages/login/login.js
 const app = getApp()
-import api from '../../api/api.js'
+import api  from '../../api/api.js'
 Page({
 
   /**
@@ -158,18 +158,22 @@ Page({
     })
   },
   orLogin: function(e) {
+    wx.showToast({
+      title: 'shide',
+    })
     let that = this
-    wx.request({
-      url: app.globalData.baseUrl + '/v1/login/org',
-      data: e.detail.value,
-      method: "POST",
-      success: function(res) {
-        wx.setStorageSync('accessToken', res.data.accessToken)
-        api.get('/v1/user').then(data=>{
-          app.globalData.userInfo = data
-          console.log(app.globalData.userInfo)
-          wx.setStorageSync('userInfo', data)
+    api.post('/v1/login/org',e.detail.value).then(res=>{
+      wx.showToast({
+        title: 'org',
+      })
+      wx.setStorageSync('accessToken', res.accessToken)
+      api.get('/v1/user').then(data => {
+        wx.showToast({
+          title: 'user',
         })
+        app.globalData.userInfo = data
+        console.log(app.globalData.userInfo)
+        wx.setStorageSync('userInfo', data)
         //登录成功后跳转
         if (!!that.data.backPage) {
           // 返回上一页
@@ -177,12 +181,26 @@ Page({
             url: that.data.backPage,
           })
         } else {
-          wx.navigateBack({
-            delta: 1
+          let pages = getCurrentPages()
+          let prevPage = pages[pages.length - 2]
+          prevPage.setData({
+            ['userInfo']: app.globalData.userInfo
+          }, function () {
+            wx.navigateBack({
+              delta: 1
+            })
           })
         }
-      }
+      })
     })
+    // wx.request({
+    //   url: app.globalData.baseUrl + '/v1/login/org',
+    //   data: e.detail.value,
+    //   method: "POST",
+    //   success: function(res) {
+       
+    //   }
+    // })
   },
   ChooseImage() {
     wx.chooseImage({

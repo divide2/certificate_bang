@@ -49,6 +49,14 @@ Page({
       })
     }
   },
+  onShow: function () {
+    console.log('mine')
+    // 设置个人信息
+    let userInfo = wx.getStorageInfo('userInfo')
+    this.setData({
+      userInfo: userInfo
+    })
+  },
   navChange: function (e) {
     this.setData({
       pageCur: e.currentTarget.dataset.cur.key
