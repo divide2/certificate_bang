@@ -1,1 +1,9 @@
 /* pages/course/course.wxss */
+@import "../../../wxParse/wxParse.wxss";
+.text-price{
+  color: #DB8080;
+}
+
+.footer-content{
+  width: 100%;
+}

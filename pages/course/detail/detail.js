@@ -14,11 +14,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    let that = this
     api.get(`/v1/org/courses/${options.id}`).then(data => {
       this.setData({
         course: data
       })
-      console.log(data)
+      let article = data.details
+      let WxParse = require('../../../wxParse/wxParse.js');
+      WxParse.wxParse('article', 'html', article,that,5)
     })
 
   },

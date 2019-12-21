@@ -1,4 +1,5 @@
 <!--pages/course/course.wxml-->
+<import src="../../../wxParse/wxParse.wxml" />
 <scroll-view scroll-y class="scrollPage">
   <swiper class="screen-swiper round-dot}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
     <swiper-item wx:for="{{course.images}}" wx:key="item">
@@ -6,16 +7,51 @@
     </swiper-item>
   </swiper>
   <view class="padding-sm bg-white">
-   <view class="padding-xs text-black text-bold text-xl">
-   <text>{{course.name}}</text>
-   </view>
-   <view class="padding-xs">
-   {{course.details}}
-   </view>
-   <view class=""></view>
-   <!-- 商品详情 -->
-   <view class="padding-xs text-content">
-   <text>{{course.details}}</text>
-   </view>
+    <view class="padding-xs text-black text-bold text-xl">
+      <text>{{course.name}}</text>
+    </view>
+    <view class="padding-xs">
+      {{course.description}}
+    </view>
+
+    <view class="flex">
+      <view class="flex-sub margin-xs radius text-left text-price text-bold">{{course.price}}</view>
+      <view class="flex-sub  margin-xs radius text-center text-bold">{{course.certificateId?'有证书':'无证书'}}</view>
+      <view class="flex-sub  margin-xs radius text-right text-bold">{{course.createUserName}}</view>
+    </view>
+    <view>
+      <view class="flex align-center">
+        <text class="cuIcon-timefill text-orange margin-right-sm "></text>
+        <text class="">{{course.startTime + '~' + course.endTime}}</text>
+      </view>
+      <view class="flex align-center">
+        <text class="cuIcon-locationfill text-orange margin-right-sm "></text>
+        <text>{{course.address + ' ' + course.addressDetail}}</text>
+      </view>
+    </view>
+  </view>
+  <!-- 商品详情 -->
+  <view class="padding-sm margin-top-sm bg-white">
+    <template is="wxParse" data="{{wxParseData:article.nodes}}"></template>
   </view>
 </scroll-view>
+<view class="cu-bar tabbar bg-white shadow foot">
+  <view class="footer-content">
+    <view class="flex justify-between align-center" bindtap="">
+      <view class="left flex">
+        <view class="text-center margin-sm">
+          <text class="cuIcon-share"></text>
+          <view>分享</view>
+        </view>
+        <view  class="text-center margin-sm">
+          <text class="cuIcon-like"></text>
+          <view>收藏</view>
+        </view>
+      </view>
+      <view class="right">
+       <button class="cu-btn round bg-orange margin-sm">立即报名</button>
+      </view>
+    </view>
+  </view>
+
+</view>
