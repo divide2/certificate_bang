@@ -2,20 +2,6 @@
 const app = getApp()
 
 Page({
-  data: {
-    type: 'default',
-    organizationType: '',
-    imgList: [],
-    backPage: null
-  },
-  onLoad: function (options) {
-    console.log(options)
-    if (options.backPage) {
-      this.setData({
-        backPage: options.backPage + '?' + options.paramKey + '=' + options.paramValue
-      })
-    }
-  },
   getUserInfo: function (e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo

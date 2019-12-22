@@ -9,8 +9,7 @@ Page({
       password: ''
     }
   },
-  login: function (e) {
-    let that = this
+  login(e) {
     api.post('/v1/login/org', e.detail.value).then(res => {
       wx.setStorageSync('accessToken', res.accessToken)
       api.get('/v1/user').then(data => {
@@ -19,27 +18,14 @@ Page({
         //登录成功后跳转
         wx.showToast({
           title: '登录成功',
+          icon: 'fail'
         })
-        if (!!that.data.backPage) {
-          // 返回上一页
-          wx.navigateTo({
-            url: that.data.backPage,
-          })
-        } else {
-          let pages = getCurrentPages()
-          let prevPage = pages[pages.length - 2]
-          prevPage.setData({
-            ['userInfo']: app.globalData.userInfo
-          }, function () {
-            wx.navigateBack({
-              delta: 1
-            })
-          })
-        }
-      }).catch(e => {
-        wx.showToast({
-          title: '用户名或密码错误',
-        })
+        wx.navigateTo({url: '/pages/index/index?curPage=mine'})
+      })
+    }).catch(e => {
+      wx.showToast({
+        icon: 'none',
+        title: '用户名或密码错误',
       })
     })
   },

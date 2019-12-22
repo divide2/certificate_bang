@@ -13,7 +13,20 @@ const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
 }
+const needLogin = () => {
+  const userInfo = wx.getStorageSync('userInfo')
+  return new Promise((resolve, reject) => {
+    if (userInfo) {
+      resolve(userInfo);
+    } else {
+      wx.navigateTo({url: '/pages/login/login'})
+      reject()
+    }
+  })
+
+}
 
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  needLogin
 }

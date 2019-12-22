@@ -81,7 +81,7 @@
     <view class="cu-list menu margin-top" bindtap="logout">
       <view class="cu-item arrow">
         <view class="content">
-          <text class="cuIcon-settingsfill text-grey"></text>
+          <text class="cuIcon-exit text-grey"></text>
           <text class="text-grey">退出</text>
         </view>
       </view>

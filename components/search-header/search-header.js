@@ -18,9 +18,7 @@ Component({
   },
   methods: {
     goToSearch: function() {
-      console.log(this.properties.canGoToSearch)
       if (this.properties.canGoToSearch) {
-        console.log(21)
         wx.navigateTo({
           url: '/pages/search/search',
         })

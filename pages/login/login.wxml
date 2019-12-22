@@ -1,14 +1,15 @@
 <!--pages/login/login.wxml-->
 <scroll-view class="scrollPage">
   <view class="padding">
-    <view wx:if="{{type==='default'}}">
+    <view>
       <view class="text-center">
         <text class="text-bold name block">证书帮</text>
         <text class="margin-top block">学员登录为微信快捷登录</text>
       </view>
       <view class="margin-top">
-        <button class="cu-btn block bg-blue margin-tb-sm lg" open-type="getPhoneNumber" bindgetphonenumber="login">学员登录</button>
-        <button class="cu-btn block line-blue margin-tb-sm lg" bindtap="toOrgLogin" >机构登录</button>
+        <button class="cu-btn block bg-blue margin-tb-sm lg" open-type="getPhoneNumber" bindgetphonenumber="login">学员登录
+        </button>
+        <button class="cu-btn block line-blue margin-tb-sm lg" bindtap="toOrgLogin">机构登录</button>
         <button class="cu-btn block bg-blue margin-tb-sm lg" bindtap="toOrgRegister">机构注册</button>
       </view>
     </view>
