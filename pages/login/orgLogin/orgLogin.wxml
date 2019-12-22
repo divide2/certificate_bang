@@ -1,0 +1,16 @@
+<!--pages/login/login.wxml-->
+<scroll-view class="scrollPage">
+  <view class="padding">
+    <form bindsubmit="orgLogin">
+      <view class="cu-form-group">
+        <view class="title">账号</view>
+        <input placeholder="请输入机构名称" name="username"/>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">密码</view>
+        <input placeholder="请输入长度为八位的密码" type="password" name="password"/>
+      </view>
+      <button class="cu-btn block bg-blue margin-top lg" formType="submit">登录</button>
+    </form>
+  </view>
+</scroll-view>

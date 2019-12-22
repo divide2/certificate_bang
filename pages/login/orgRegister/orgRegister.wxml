@@ -1,0 +1,50 @@
+<!--pages/login/login.wxml-->
+<scroll-view class="scrollPage">
+  <view class="padding">
+    <form bindsubmit="register">
+      <view class="cu-form-group">
+        <view class="title">账号</view>
+        <input placeholder="请输入机构名称" name="username"/>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">密码</view>
+        <input placeholder="请输入长度为八位的密码" name="password"/>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">联系人</view>
+        <input placeholder="请输入人姓名" name="contactUser"/>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">联系方式</view>
+        <input placeholder="请输入联系电话" name="contactWay"/>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">公司地址</view>
+        <input placeholder="请输入公司办公地址" name="address"/>
+      </view>
+      <view class="cu-bar bg-white margin-top">
+        <view class="action">
+          营业执照
+        </view>
+        <view class="action">
+          只需一张即可
+        </view>
+      </view>
+      <view class="cu-form-group">
+        <view class="grid col-4 grid-square flex-sub">
+          <view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="ViewImage"
+                data-url="{{imgList[index]}}">
+            <image src='{{imgList[index]}}' mode='aspectFill'></image>
+            <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+              <text class="cuIcon-close"></text>
+            </view>
+          </view>
+          <view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<4}}">
+            <text class="cuIcon-cameraadd"></text>
+          </view>
+        </view>
+      </view>
+      <button class="cu-btn block bg-blue margin-top lg" formType="submit">注册</button>
+    </form>
+  </view>
+</scroll-view>
