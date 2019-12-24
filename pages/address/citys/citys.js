@@ -1,19 +1,18 @@
 // pages/address/citys/citys.js
 import api from '../../../api/api.js'
+
 Page({
 
   /**
    * 页面的初始数据
    */
-  data: {
-
-  },
+  data: {},
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    let list = [];
+  onLoad: function(options) {
+    let list = []
     for (let i = 0; i < 26; i++) {
       list[i] = String.fromCharCode(65 + i)
     }
@@ -21,7 +20,7 @@ Page({
       list: list,
       listCur: list[0]
     })
-    api.get('/v1/address/cities').then(data=>{
+    api.get('/v1/address/cities').then(data => {
       console.log(data)
       // todo 数据暂时不对，再搞显示
     })
@@ -31,72 +30,44 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-    let that = this;
-    wx.createSelectorQuery().select('.indexBar-box').boundingClientRect(function (res) {
+    let that = this
+    wx.createSelectorQuery().select('.indexBar-box').boundingClientRect(function(res) {
       that.setData({
         boxTop: res.top
       })
-    }).exec();
-    wx.createSelectorQuery().select('.indexes').boundingClientRect(function (res) {
+    }).exec()
+    wx.createSelectorQuery().select('.indexes').boundingClientRect(function(res) {
       that.setData({
         barTop: res.top
       })
     }).exec()
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+//获取文字信息
+  getCur(e) {
+    this.setData({
+      hidden: false,
+      listCur: this.data.list[e.target.id],
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  setCur(e) {
+    this.setData({
+      hidden: true,
+      listCur: this.data.listCur
+    })
   },
   //滑动选择Item
   tMove(e) {
     let y = e.touches[0].clientY,
       offsettop = this.data.boxTop,
-      that = this;
+      that = this
     //判断选择区域,只有在选择区才会生效
     if (y > offsettop) {
-      let num = parseInt((y - offsettop) / 20);
+      let num = parseInt((y - offsettop) / 20)
       this.setData({
         listCur: that.data.list[num]
       })
-    };
+    }
   },
 
   //触发全部开始选择
@@ -114,10 +85,10 @@ Page({
     })
   },
   indexSelect(e) {
-    let that = this;
-    let barHeight = this.data.barHeight;
-    let list = this.data.list;
-    let scrollY = Math.ceil(list.length * e.detail.y / barHeight);
+    let that = this
+    let barHeight = this.data.barHeight
+    let list = this.data.list
+    let scrollY = Math.ceil(list.length * e.detail.y / barHeight)
     for (let i = 0; i < list.length; i++) {
       if (scrollY < i + 1) {
         that.setData({
@@ -128,5 +99,5 @@ Page({
       }
     }
   }
-  
+
 })
