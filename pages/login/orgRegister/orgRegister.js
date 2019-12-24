@@ -24,15 +24,19 @@ Page({
       sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album'], //从相册选择
       success: (res) => {
-        if (this.data.imgList.length !== 0) {
-          this.setData({
-            imgList: this.data.imgList.concat(res.tempFilePaths)
-          })
-        } else {
-          this.setData({
-            imgList: res.tempFilePaths
-          })
-        }
+        wx.uploadFile({
+          url: `${app.globalData.baseUrl}/v1/upload/image`,
+          filePath: res.tempFilePaths[0],
+          header: {
+            Authorization: 'Bearer ' + wx.getStorageSync('accessToken')
+          },
+          name: 'file',
+          success(res) {
+            that.setData({
+              imgList: [res.data]
+            })
+          }
+        })
       }
     });
   },

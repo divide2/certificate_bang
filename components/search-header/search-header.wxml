@@ -5,7 +5,7 @@
       <text class="location" bindtap="chooseAddress">{{location}}</text>
     </view>
     <view class="input-wrap">
-      <input placeholder="证书名称或课程名称" placeholder-class="input-placeholder" bindfocus="goToSearch" />
+      <input placeholder="证书名称或课程名称" placeholder-class="input-placeholder" />
     </view>
   </view>
 </search-header>

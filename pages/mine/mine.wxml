@@ -3,36 +3,36 @@
   <view class="radius shadow-warp bg-white">
     <!-- <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 登录 </button> -->
     <view class="cu-list menu">
-      <view class="cu-item arrow margin-top margin-bottom" bindtap="toLogin" wx:if="{{!hasUserInfo}}">
+      <view class="cu-item arrow margin-top margin-bottom" bindtap="toLogin" wx:if="{{!userInfo}}">
         <view class="login-wrap flex align-center">
           <view>
             <text class="text-bold text-lg">登录/注册</text>
           </view>
         </view>
       </view>
-      <view class="cu-item arrow margin-top margin-bottom" wx:else>
+      <view class="cu-item arrow margin-top margin-bottom" bindtap="toEditSelf" wx:else>
         <view class="content flex align-center justify-between">
           <view class="content-left">
             <view>
               <view class="flex align-center">
-                <view class="cu-avatar xl round" style="background-image:url({{userInfo.avatarUrl}});">
+                <view class="cu-avatar xl round" style="background-image:url({{userInfo.avatar}});">
                 </view>
                 <view class="base-info margin-left">
                   <view>
-                    <text class="text-bold">{{userInfo.nickName}}</text>
+                    <text class="text-bold">{{userInfo.username}}</text>
                   </view>
-                  <text>xxxxxxxx</text>
+                  <text>{{userInfo.username}}</text>
                 </view>
               </view>
               <view class="flex margin-top">
-                <view>
+               <!-- <view>
                   <text class="margin-sm">关注</text>
                   <text>12</text>
                 </view>
                 <view class="margin-left">
                   <text class="margin-sm">粉丝</text>
                   <text>12</text>
-                </view>
+                </view>-->
               </view>
             </view>
           </view>

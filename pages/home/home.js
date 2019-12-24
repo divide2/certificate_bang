@@ -22,7 +22,8 @@ Component({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    swiperList: [{
+    swiperList: [
+      {
       id: 0,
       type: 'image',
       url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg'
@@ -43,7 +44,8 @@ Component({
       type: 'image',
       url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big25011.jpg'
     }],
-    courses: [{
+    courses: [
+      {
       image: "https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg",
       name: '消防员证书课程',
       tags: ['有证书', '认证机构'],

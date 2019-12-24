@@ -18,7 +18,6 @@ Page({
         //登录成功后跳转
         wx.showToast({
           title: '登录成功',
-          icon: 'fail'
         })
         wx.navigateTo({url: '/pages/index/index?curPage=mine'})
       })

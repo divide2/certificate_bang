@@ -99,15 +99,19 @@ Page({
       sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album'], //从相册选择
       success: (res) => {
-        if (this.data.course.images.length != 0) {
-          this.setData({
-            ['course.images']: this.data.course.images.concat(res.tempFilePaths)
-          })
-        } else {
-          this.setData({
-            ['course.images']: res.tempFilePaths
-          })
-        }
+        wx.uploadFile({
+          url: `${app.globalData.baseUrl}/v1/upload/image`,
+          filePath: res.tempFilePaths[0],
+          header: {
+            Authorization: 'Bearer ' + wx.getStorageSync('accessToken')
+          },
+          name: 'file',
+          success(res) {
+            that.setData({
+              imgList: [res.data]
+            })
+          }
+        })
       }
     });
   },
@@ -119,10 +123,8 @@ Page({
   },
   DelImg(e) {
     wx.showModal({
-      title: '召唤师',
-      content: '确定要删除这段回忆吗？',
-      cancelText: '再看看',
-      confirmText: '再见',
+      title: '删除',
+      content: '确定要删除吗？',
       success: res => {
         if (res.confirm) {
           this.data.course.images.splice(e.currentTarget.dataset.index, 1);

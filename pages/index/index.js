@@ -41,19 +41,6 @@ Page({
         pageCur: options.curPage
       })
     }
-    let info = wx.getStorageSync('userInfo')
-    if (info) {
-      this.setData({
-        userInfo: info,
-        hasUserInfo: true
-      })
-    }
-  },
-  onShow: function () {
-    let userInfo = wx.getStorageInfo('userInfo')
-    this.setData({
-      userInfo: userInfo
-    })
   },
   navChange: function (e) {
     this.setData({
