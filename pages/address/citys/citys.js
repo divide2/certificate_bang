@@ -1,17 +1,18 @@
 // pages/address/citys/citys.js
-import api from '../../../api/api.js'
-
+import pinyin from 'pinyin'
 Page({
 
   /**
    * 页面的初始数据
    */
-  data: {},
+  data: {
+    hidden: true
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad() {
     let list = []
     for (let i = 0; i < 26; i++) {
       list[i] = String.fromCharCode(65 + i)
@@ -20,10 +21,11 @@ Page({
       list: list,
       listCur: list[0]
     })
-    api.get('/v1/address/cities').then(data => {
-      console.log(data)
-      // todo 数据暂时不对，再搞显示
-    })
+    console.log(pinyin('你好'))
+    // api.get('/v1/address/cities').then(data => {
+    //   console.log(data)
+    //   // todo 数据暂时不对，再搞显示
+    // })
   },
 
   /**
@@ -31,12 +33,12 @@ Page({
    */
   onReady() {
     let that = this
-    wx.createSelectorQuery().select('.indexBar-box').boundingClientRect(function(res) {
+    wx.createSelectorQuery().select('.indexBar-box').boundingClientRect(function (res) {
       that.setData({
         boxTop: res.top
       })
     }).exec()
-    wx.createSelectorQuery().select('.indexes').boundingClientRect(function(res) {
+    wx.createSelectorQuery().select('.indexes').boundingClientRect(function (res) {
       that.setData({
         barTop: res.top
       })
@@ -64,6 +66,7 @@ Page({
     //判断选择区域,只有在选择区才会生效
     if (y > offsettop) {
       let num = parseInt((y - offsettop) / 20)
+      if (num > 25) num = 25
       this.setData({
         listCur: that.data.list[num]
       })
@@ -81,7 +84,7 @@ Page({
   tEnd() {
     this.setData({
       hidden: true,
-      listCurID: this.data.listCur
+      listCurId: this.data.listCur
     })
   },
   indexSelect(e) {

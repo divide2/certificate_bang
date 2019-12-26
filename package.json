@@ -1,0 +1,23 @@
+{
+  "name": "certificate_bang",
+  "version": "1.0.0",
+  "description": "cert",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/divide2/certificate_bang.git"
+  },
+  "author": "bvvy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/divide2/certificate_bang/issues"
+  },
+  "homepage": "https://github.com/divide2/certificate_bang#readme",
+  "dependencies": {
+    "miniprogram-sm-crypto": "^0.1.0",
+    "pinyin": "^2.9.0"
+  }
+}
