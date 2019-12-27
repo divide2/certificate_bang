@@ -1,5 +1,4 @@
 // pages/address/citys/citys.js
-import pinyin from 'pinyin'
 Page({
 
   /**
@@ -21,7 +20,6 @@ Page({
       list: list,
       listCur: list[0]
     })
-    console.log(pinyin('你好'))
     // api.get('/v1/address/cities').then(data => {
     //   console.log(data)
     //   // todo 数据暂时不对，再搞显示
