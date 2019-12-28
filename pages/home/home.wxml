@@ -26,7 +26,7 @@
         <text>推荐</text>
       </view>
       <view class="group-content">
-        <view wx:for="{{courses}}" wx:key="index" bindtap="toCourse">
+        <view wx:for="{{courses}}" wx:key="index" bindtap="toCourse" data-id="{{item.id}}">
           <course-card class="course-card" course="{{item}}"></course-card>
         </view>
       </view>

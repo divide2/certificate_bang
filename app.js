@@ -12,7 +12,8 @@ App({
         const latitude = res.latitude
         const longitude = res.longitude
         api.get('/v1/address/city/resolve', { latitude: latitude, longitude: longitude }).then(res => {
-          console.log(res)
+          wx.setStorageSync('curCity', res.city)
+          wx.setStorageSync('originCity', res.city);
         })
       }
     })

@@ -1,23 +1,33 @@
 <!--pages/address/citys/citys.wxml-->
-<scroll-view scroll-y="true" class="indexes" scroll-into-view="indexes-{{listCurId}}" style="height:calc(100vh)" scroll-with-animation="true" enable-back-to-top="true">
-    <block wx:for="{{list}}" wx:key>
-        <view class="padding-xs padding-left indexItem-{{list[index]}}" id="indexes-{{list[index]}}" data-index="{{list[index]}}">{{list[index]}}</view>
-        <view class="cu-list menu no-padding">
-            <view class="cu-item" wx:for="{{2}}" wx:key wx:for-index="sub">
-                <view class="content">
-                    <view class="text-grey">{{list[index]}}
-                        <text class="text-abc">{{list[sub]}}</text>
-                        君
-                    </view>
-                </view>
-            </view>
+
+  <view class="cu-bar bg-white margin-top">
+    <view class="action">
+      当前位置<view class="cu-tag line-blue margin-left-sm" bindtap="chooseCity" data-city="{{originCity}}">{{originCity}}</view>
+    </view>
+  </view>
+<scroll-view scroll-y="true" class="indexes" scroll-into-view="indexes-{{listCurId}}" style="height:calc(100vh)"
+             scroll-with-animation="true" enable-back-to-top="true">
+  <block wx:for="{{list}}" wx:key wx:for-item="letter">
+    <view class="padding-xs padding-left indexItem-{{list[index]}}" id="indexes-{{list[index]}}"
+          data-index="{{list[index]}}">{{letter}}
+    </view>
+    <view class="cu-list menu no-padding">
+      <block wx:for="{{cities}}" wx:key wx:for-item="city">
+        <view class="cu-item" wx:if="{{city.firstLetter==letter}}" bindtap="chooseCity" data-city="{{city.name}}">
+          <view class="content">
+            <view class="text-grey">{{city.name}}</view>
+          </view>
         </view>
-    </block>
+      </block>
+    </view>
+  </block>
 </scroll-view>
 <view class="indexBar" style="height:calc(100vh)">
-    <view class="indexBar-box" bindtouchstart="tStart" bindtouchend="tEnd" catchtouchmove="tMove">
-        <view class="indexBar-item" wx:for="{{list}}" wx:key id="{{index}}" bindtouchstart="getCur" bindtouchend="setCur">{{list[index]}}</view>
+  <view class="indexBar-box" bindtouchstart="tStart" bindtouchend="tEnd" catchtouchmove="tMove">
+    <view class="indexBar-item" wx:for="{{list}}" wx:key id="{{index}}" bindtouchstart="getCur" bindtouchend="setCur">
+      {{list[index]}}
     </view>
+  </view>
 </view>
 <!--选择显示-->
 <view hidden="{{hidden}}" class="indexToast">{{listCur}}</view>

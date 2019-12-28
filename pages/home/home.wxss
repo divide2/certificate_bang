@@ -1,6 +1,7 @@
 /* pages/home/home.wxss */
 .home {
   background: #fff;
+  padding-bottom: 120rpx;
 }
 
 .userinfo {

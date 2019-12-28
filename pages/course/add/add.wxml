@@ -81,8 +81,8 @@
     
     <view class="cu-form-group">
       <view class="grid col-4 grid-square flex-sub">
-        <view class="bg-img" wx:for="{{course.images}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{course.images[index]}}">
-          <image src='{{course.images[index]}}' mode='aspectFill'></image>
+        <view class="bg-img" wx:for="{{course.images}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{item}}">
+          <image src='{{item}}' mode='aspectFill'></image>
           <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
             <text class="cuIcon-close"></text>
           </view>

@@ -37,7 +37,7 @@
 </scroll-view>
 <view class="cu-bar tabbar bg-white shadow foot">
   <view class="footer-content">
-    <view class="flex justify-between align-center" bindtap="">
+    <view class="flex justify-between align-center">
       <view class="left flex">
         <view class="text-center margin-sm">
           <text class="cuIcon-share"></text>
@@ -49,7 +49,7 @@
         </view>
       </view>
       <view class="right">
-       <button class="cu-btn round bg-orange margin-sm">立即报名</button>
+       <button class="cu-btn round bg-orange margin-sm" bindtap="join">立即报名</button>
       </view>
     </view>
   </view>

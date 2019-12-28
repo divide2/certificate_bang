@@ -19,7 +19,7 @@ Page({
         wx.showToast({
           title: '登录成功',
         })
-        wx.navigateTo({url: '/pages/index/index?curPage=mine'})
+        wx.redirectTo({url: '/pages/index/index?curPage=mine'})
       })
     }).catch(e => {
       wx.showToast({

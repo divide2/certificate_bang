@@ -1,5 +1,6 @@
 // pages/publish_course/publish_course.js
 import api from '../../../api/api.js'
+
 const app = getApp()
 Page({
   /**
@@ -7,7 +8,7 @@ Page({
    */
   data: {
     professionPicker: [],
-    course:{
+    course: {
       name: '', // 名字
       price: '', // 价格
       addressName: '', // 地址名字
@@ -28,56 +29,56 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     this.getProfession()
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   },
   getProfession() {
@@ -94,6 +95,7 @@ Page({
     })
   },
   ChooseImage() {
+    const that = this
     wx.chooseImage({
       count: 4, //默认9
       sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
@@ -107,8 +109,10 @@ Page({
           },
           name: 'file',
           success(res) {
+            that.data.course.images.push(res.data)
+            console.log(that.data.course)
             that.setData({
-              imgList: [res.data]
+              ['course.images']:  that.data.course.images
             })
           }
         })
@@ -136,16 +140,8 @@ Page({
     })
   },
   confirm(e) {
-    wx.request({
-      url: app.globalData.baseUrl + '/v1/org/courses',
-      data: this.data.course,
-      method: 'POST',
-      header: {
-        Authorization: 'Bearer ' + wx.getStorageSync('accessToken')
-      },
-      success: function() {
-
-      }
+    api.post('/v1/org/courses', this.data.course).then(res => {
+      wx.redirectTo({url: '/pages/course/list'})
     })
   },
   startTimeChange(e) {

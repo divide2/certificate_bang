@@ -1,29 +1,31 @@
 // pages/address/citys/citys.js
+import api from '../../../api/api.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    hidden: true
+    hidden: true,
+    cities: [],
+    originCity: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad() {
-    let list = []
-    for (let i = 0; i < 26; i++) {
-      list[i] = String.fromCharCode(65 + i)
-    }
     this.setData({
-      list: list,
-      listCur: list[0]
+      originCity: wx.getStorageSync('originCity')
     })
-    // api.get('/v1/address/cities').then(data => {
-    //   console.log(data)
-    //   // todo 数据暂时不对，再搞显示
-    // })
+    api.get('/v1/operate/cities').then(data => {
+      this.setData({
+        cities: data,
+        list: data.map(item => item.firstLetter)
+          .filter((item, index, arr) => arr.indexOf(item) === index)
+          .sort((a, b) => a > b ? 1 : -1)
+      })
+    })
   },
 
   /**
@@ -41,6 +43,10 @@ Page({
         barTop: res.top
       })
     }).exec()
+  },
+  chooseCity(e) {
+    wx.setStorageSync('curCity', e.currentTarget.dataset.city)
+    wx.redirectTo({url: '/pages/index/index'})
   },
 //获取文字信息
   getCur(e) {
@@ -64,7 +70,7 @@ Page({
     //判断选择区域,只有在选择区才会生效
     if (y > offsettop) {
       let num = parseInt((y - offsettop) / 20)
-      if (num > 25) num = 25
+      if (num > this.data.list.length-1) num = this.data.list.length-1
       this.setData({
         listCur: that.data.list[num]
       })

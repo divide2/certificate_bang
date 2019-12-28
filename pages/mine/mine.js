@@ -18,7 +18,6 @@ Component({
     this.setData({
       userInfo: wx.getStorageSync('userInfo')
     })
-    console.log(this.data.userInfo)
   },
   methods: {
     toLogin: function () {
@@ -46,8 +45,8 @@ Component({
         success: function (res) {
           console.log(res)
           wx.clearStorage()
-          wx.navigateTo({
-            url: '/pages/index/index?curPage=mine',
+          wx.redirectTo({
+            url: '/pages/index/index?curPage=mine'
           })
         }
       })

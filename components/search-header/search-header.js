@@ -14,10 +14,15 @@ Component({
   },
   data: {
     inputText: '',
-    location:'深圳'
+    location: ''
+  },
+  ready() {
+    this.setData({
+      location: wx.getStorageSync('curCity')
+    })
   },
   methods: {
-    goToSearch: function() {
+    goToSearch: function () {
       if (this.properties.canGoToSearch) {
         wx.navigateTo({
           url: '/pages/search/search',

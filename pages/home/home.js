@@ -1,4 +1,5 @@
 // pages/home/home.js
+import api from '../../api/api.js'
 const app = getApp()
 Component({
   options: {
@@ -62,10 +63,23 @@ Component({
     }],
   },
 
+  ready() {
+    this.setData({
+      location: wx.getStorageSync('curCity')
+    })
+    this.getCourse()
+  },
   /**
    * 组件的方法列表
    */
   methods: {
+    getCourse() {
+      api.get('/v1/courses').then(data => {
+        this.setData({
+          courses: data.content
+        })
+      })
+    },
     getUserInfo: function (e) {
       app.globalData.userInfo = e.detail.userInfo
       this.setData({
@@ -78,9 +92,9 @@ Component({
         cardCur: e.detail.current
       })
     },
-    toCourse() {
+    toCourse(e) {
       wx.navigateTo({
-        url: '/pages/course/detail/detail',
+        url: '/pages/course/detail/detail?id='+e.currentTarget.dataset.id
       })
     }
   }
