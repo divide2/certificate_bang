@@ -1,11 +1,8 @@
 <!--pages/course/orgcourse/orgcouse.wxml-->
-<scroll-view scroll-y class="scrollPage" style="margin-top:100rpx;">
-  <block>
-  <view wx:for="{{courses}}" wx:key>
-   <my-course-card my-class="flex justify-between" text-bold="text-bold" padding="padding" course="{{item}}"></my-course-card>
-  </view>
-    <view class="text-center" wx:if="{{courses.length===0}}">
-      你还未发布过
-    </view>
-  </block>
-</scroll-view>
+<view wx:for="{{courses}}" wx:key>
+  <my-course-card my-class="flex justify-between" text-bold="text-bold" padding="padding"
+                  course="{{item}}"></my-course-card>
+</view>
+<view class="text-center" wx:if="{{courses.length===0}}">
+  你还未发布过
+</view>

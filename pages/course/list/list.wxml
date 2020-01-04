@@ -1,14 +1,13 @@
 <!--pages/courselist/courselist.wxml-->
-<scroll-view scroll-x class="bg-white nav text-center fixed">
+<!--<scroll-view scroll-x class="bg-white nav text-center fixed">
   <view class="cu-item {{index==tabCur?'text-blue cur':''}}" wx:for="{{tabNav}}" wx:key bindtap='tabSelect' data-id="{{index}}">
     {{tabNav[index].value}}
   </view>
-</scroll-view>
-<scroll-view scroll-y class="scrollPage" style="margin-top:100rpx;">
-  <block>
-  <view wx:for="{{courses}}">
-   <my-course-card my-class="flex justify-between" text-bold="text-bold" padding="padding" course="{{item}}"> 
-   </my-course-card> 
-  </view>
-  </block>
-</scroll-view>
+</scroll-view>-->
+<view wx:for="{{courses}}" wx:key>
+  <my-course-card my-class="flex justify-between" text-bold="text-bold" padding="padding" course="{{item}}">
+  </my-course-card>
+</view>
+<view class="text-center" wx:if="{{courses.length===0}}">
+  你还没有报名的课程
+</view>

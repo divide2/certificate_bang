@@ -1,6 +1,6 @@
 <search-header>
-  <view class="search-header" bindtap="chooseAddress">
-    <view class="selected-location" wx:if="{{showLocation}}">
+  <view class="search-header">
+    <view class="selected-location" wx:if="{{showLocation}}" bindtap="chooseAddress">
       <text class="iconfont icon-location"></text>
       <text class="location">{{location}}</text>
     </view>

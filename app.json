@@ -5,6 +5,7 @@
     "pages/login/orgLogin/orgLogin",
     "pages/login/orgRegister/orgRegister",
     "pages/mine/mine",
+    "pages/mine/editSelf/editSelf",
     "pages/search/search",
     "pages/logs/logs",
     "pages/certificate/list/list",

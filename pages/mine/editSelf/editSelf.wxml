@@ -1,0 +1,18 @@
+<!--pages/publish_course/publish_course.wxml-->
+<scroll-view scroll-y class="scrollPage">
+  <form bindsubmit="confirm">
+    <view class="cu-form-group margin-top">
+      <view class="title">头像</view>
+      <view class="cu-avatar radius bg-gray">
+        <image class="cu-avatar radius" src="{{userInfo.avatar}}"></image>
+      </view>
+    </view>
+    <view class="cu-form-group margin-top">
+      <view class="title">昵称</view>
+      <input name="nickname" value="{{userInfo.nickname}}" bindinput="inputCourse" data-key="nickname"></input>
+    </view>
+    <view class="cu-bar btn-group margin-top margin-bottom">
+      <button class="cu-btn bg-green shadow-blur round lg" formType="submit">保存</button>
+    </view>
+  </form>
+</scroll-view>

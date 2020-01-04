@@ -33,7 +33,9 @@ Component({
       })
     },
     toEditSelf() {
-
+      wx.navigateTo({
+        url: '/pages/mine/editSelf/editSelf'
+      })
     },
     logout: function () { //退出
       wx.request({

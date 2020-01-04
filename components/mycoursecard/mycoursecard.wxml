@@ -1,7 +1,7 @@
 <!--components/mycoursecard/mycoursecard.wxml-->
 <view class="padding my-course-card">
   <view class="my-class header">
-    <text class="text-bold">xddddx机构</text>
+    <text class="text-bold">{{course.name}}</text>
     <text class="tip">请注意开始时间</text>
   </view>
   <view>

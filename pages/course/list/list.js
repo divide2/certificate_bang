@@ -24,7 +24,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    this.getData()
+    this.getCourse()
   },
 
   /**
@@ -81,13 +81,31 @@ Page({
       tabCur: e.currentTarget.dataset.id,
       scrollLeft: (e.currentTarget.dataset.id - 1) * 60
     })
-    this.getData()
+    this.getCourse()
   },
-  getData() {
+  getCourse() {
     // todo 需要加上参数
     api.get('/v1/user/joined').then(data=>{
       this.setData({
         courses: data.content
+      })
+    })
+  },
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom() {
+    if (!this.data.last) {
+      this.setData({ 'query.page': this.data.query.page + 1 });
+      this.getCourse();
+    }
+  },
+  getCourse(data) {
+    api.get('/v1/user/joined', this.data.query).then(data => {
+      this.data.courses.push(...data.content);
+      this.setData({
+        last: data.last,
+        courses: this.data.courses
       })
     })
   }

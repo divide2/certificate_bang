@@ -16,7 +16,7 @@
           <radio-group class="radio-list" bindchange="selectOption">
             <view class="cu-form-group option-item" wx:for-items="{{item.list}}" wx:for-item="option" wx:key="index">
               <view class="title">{{option.name}}</view>
-              <radio value="{{option.id}}" checked="{{option.checked}}" class="radio-item"></radio>
+              <radio value="{{option.value}}" checked="{{option.checked}}" class="radio-item"></radio>
             </view>
           </radio-group>
         </view>

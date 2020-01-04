@@ -45,22 +45,7 @@ Component({
       type: 'image',
       url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big25011.jpg'
     }],
-    courses: [
-      {
-      image: "https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg",
-      name: '消防员证书课程',
-      tags: ['有证书', '认证机构'],
-      address: '广东深圳',
-      price: '1000',
-      date: '2019-11-11'
-    }, {
-      image: "https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg",
-      name: '消防员证书课程',
-      tags: ['有证书', '认证机构'],
-      address: '广东深圳',
-      price: '1000',
-      date: '2019-11-11',
-    }],
+    courses: [],
   },
 
   ready() {
