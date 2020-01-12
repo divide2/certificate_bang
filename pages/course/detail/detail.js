@@ -31,7 +31,7 @@ Page({
       wx.showToast({
         title: '报名成功'
       })
-      wx.redirectTo({url: '/pages/course/list/list'})
+      wx.redirectTo({url: '/pages/mine/list/list'})
     })
   }
 })

@@ -44,7 +44,7 @@
   </view>
   <view>
     <view class="cu-list menu margin-top">
-      <view class="cu-item arrow" bindtap="navigateTo" data-url="/pages/course/list/list">
+      <view class="cu-item arrow" bindtap="navigateTo" data-url="/pages/mine/list/list">
         <view class="content">
           <text class="cuIcon-goodsfill text-green"></text>
           <text class="text-grey">我的课程</text>

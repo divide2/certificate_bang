@@ -45,7 +45,6 @@ Component({
         },
         method: 'POST',
         success: function (res) {
-          console.log(res)
           wx.clearStorage()
           wx.redirectTo({
             url: '/pages/index/index?curPage=mine'

@@ -17,7 +17,11 @@ Page({
       value: '已完成'
     }],
     tabCur: 0,
-    courses: []
+    courses: [],
+    query: {
+      page: 0
+    },
+    last: false
   },
 
   /**
@@ -63,13 +67,6 @@ Page({
   },
 
   /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
@@ -82,14 +79,6 @@ Page({
       scrollLeft: (e.currentTarget.dataset.id - 1) * 60
     })
     this.getCourse()
-  },
-  getCourse() {
-    // todo 需要加上参数
-    api.get('/v1/user/joined').then(data=>{
-      this.setData({
-        courses: data.content
-      })
-    })
   },
   /**
    * 页面上拉触底事件的处理函数
