@@ -117,10 +117,8 @@ Component({
     selectOption: function (e) {
       let arrs = this.data.options[this.data.cur_option_list_index].list
       for (const option of arrs) {
-        console.log(option.value, '000', e.detail.value)
         option.checked = option.value === e.detail.value
       }
-      console.log('arrs', arrs);
       this.setData({
         [`options[${this.data.cur_option_list_index}].list`]: arrs
       })

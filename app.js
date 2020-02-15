@@ -82,7 +82,7 @@ App({
       name: '发现',
       icon: 'discover',
       curIcon: 'discoverfill',
-      page: '/pages/index/index'
+      page: '/pages/discover/articles/articles'
     }, {
       key: 'mine',
       name: '我的',

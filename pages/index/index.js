@@ -50,6 +50,9 @@ Page({
     })
   },
   getCourse() {
+    this.setData({
+      ['query.city']: wx.getStorageSync('curCity')
+    })
     api.get('/v1/courses', this.data.query).then(data => {
       this.data.courses.push(...data.content);
       this.setData({
@@ -61,7 +64,7 @@ Page({
   onTabChange(e) {
     let data = e.detail
     data.page = 0
-    this.setData({query: data});
+    this.setData({query: data, courses: []});
     this.getCourse()
   },
   onReachBottom() {

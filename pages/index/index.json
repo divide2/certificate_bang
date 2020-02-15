@@ -2,6 +2,7 @@
   "usingComponents": {
     "home": "/pages/home/home",
     "mine": "/pages/mine/mine",
-    "course": "/pages/search/search"
+    "course": "/pages/search/search",
+    "discover": "/pages/discover/index/index"
   }
 }

@@ -7,6 +7,8 @@
     "pages/mine/mine",
     "pages/mine/editSelf/editSelf",
     "pages/mine/list/list",
+    "pages/discover/index/index",
+    "pages/discover/article/article",
     "pages/search/search",
     "pages/logs/logs",
     "pages/certificate/list/list",

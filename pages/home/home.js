@@ -23,28 +23,7 @@ Component({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    swiperList: [
-      {
-      id: 0,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg'
-    }, {
-      id: 1,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84001.jpg',
-    }, {
-      id: 2,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big39000.jpg'
-    }, {
-      id: 3,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg'
-    }, {
-      id: 4,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big25011.jpg'
-    }],
+    sliders: [],
     courses: [],
   },
 
@@ -53,11 +32,19 @@ Component({
       location: wx.getStorageSync('curCity')
     })
     this.getCourse()
+    this.getSlider()
   },
   /**
    * 组件的方法列表
    */
   methods: {
+    getSlider() {
+      api.get('/v1/sliders').then(data => {
+        this.setData({
+          sliders: data.content
+        })
+      })
+    },
     getCourse() {
       api.get('/v1/courses').then(data => {
         this.setData({
@@ -79,7 +66,12 @@ Component({
     },
     toCourse(e) {
       wx.navigateTo({
-        url: '/pages/course/detail/detail?id='+e.currentTarget.dataset.id
+        url: '/pages/course/detail/detail?id='+e.currentTarget.id
+      })
+    },
+    toLink(e) {
+      wx.navigateTo({
+        url: e.currentTarget.dataset.link
       })
     }
   }

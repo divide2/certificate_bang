@@ -1,0 +1,7 @@
+<import src="../../../wxParse/wxParse.wxml" />
+<view class='margin-xl bg-white padding-xl radius shadow-lg'>
+  <view class='text-center margin-bottom text-lg  text-grey'>{{article.title}}</view>
+  <view class='text-content'>
+    <template is="wxParse" data="{{wxParseData:content.nodes}}"></template>
+  </view>
+</view>

@@ -15,6 +15,7 @@ const request = (url, options) => {
           resolve(req.data)
         } else if (req.statusCode===403) {
           //token过期需重新登录
+          wx.removeStorageSync('userInfo')
           wx.redirectTo({
             url: '/pages/login/login'
           })

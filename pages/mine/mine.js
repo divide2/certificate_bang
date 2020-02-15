@@ -45,7 +45,7 @@ Component({
         },
         method: 'POST',
         success: function (res) {
-          wx.clearStorage()
+          wx.removeStorageSync('userInfo')
           wx.redirectTo({
             url: '/pages/index/index?curPage=mine'
           })

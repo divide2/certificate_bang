@@ -1,4 +1,5 @@
 // components/notice-board/notice-board.js
+import api from '../../api/api'
 Component({
   options: {
     addGlobalClass: true,
@@ -21,6 +22,9 @@ Component({
   /**
    * 组件的方法列表
    */
+  ready() {
+
+  },
   methods: {
 
   }
