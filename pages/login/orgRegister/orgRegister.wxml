@@ -2,20 +2,20 @@
 <view class="padding">
   <form bindsubmit="register">
     <view class="cu-form-group">
-      <view class="title">账号</view>
+      <view class="title">机构名称</view>
       <input placeholder="请输入机构名称" name="username"/>
     </view>
     <view class="cu-form-group">
       <view class="title">密码</view>
-      <input type="password" placeholder="请输入长度为八位的密码" name="password"/>
+      <input type="password" placeholder="请输入至少6位的密码" name="password"/>
     </view>
     <view class="cu-form-group">
       <view class="title">联系人</view>
-      <input placeholder="请输入人姓名" name="contactUser"/>
+      <input placeholder="请输入联系人姓名" name="contactUser"/>
     </view>
     <view class="cu-form-group">
-      <view class="title">联系方式</view>
-      <input type="number" placeholder="请输入联系电话" name="contactWay"/>
+      <view class="title">手机号</view>
+      <input type="number" placeholder="请输入手机号" name="contactWay"/>
     </view>
     <view class="cu-form-group">
       <view class="title">邮箱</view>

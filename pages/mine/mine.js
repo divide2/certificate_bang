@@ -12,11 +12,16 @@ Component({
    * 页面的初始数据
    */
   data: {
-    userInfo: {}
+    userInfo: {},
+
   },
   ready() {
+    const userInfo = wx.getStorageSync('userInfo')
+
     this.setData({
-      userInfo: wx.getStorageSync('userInfo')
+      userInfo: userInfo,
+      isOrg: userInfo.type === 'ORG',
+      isUser: userInfo.type === 'USER'
     })
   },
   methods: {

@@ -44,7 +44,7 @@
   </view>
   <view>
     <view class="cu-list menu margin-top">
-      <view class="cu-item arrow" bindtap="navigateTo" data-url="/pages/mine/list/list">
+      <view wx:if="{{isUser}}" class="cu-item arrow" bindtap="navigateTo" data-url="/pages/mine/list/list">
         <view class="content">
           <text class="cuIcon-goodsfill text-green"></text>
           <text class="text-grey">我的课程</text>
@@ -56,13 +56,13 @@
           <text class="text-grey">发表</text>
         </view>
       </view>-->
-      <view class="cu-item arrow" bindtap="navigateTo" data-url="/pages/course/add/add">
+      <view wx:if="{{isOrg}}" class="cu-item arrow" bindtap="navigateTo" data-url="/pages/course/add/add">
         <view class="content">
           <text class="cuIcon-writefill text-cyan"></text>
           <text class="text-grey">发布课程</text>
         </view>
       </view>
-       <view class="cu-item arrow" bindtap="navigateTo" data-url="/pages/course/orgcourse/orgcourse">
+       <view wx:if="{{isOrg}}" class="cu-item arrow" bindtap="navigateTo" data-url="/pages/course/orgcourse/orgcourse">
         <view class="content">
           <text class="cuIcon-formfill text-orange"></text>
           <text class="text-grey">已发布课程</text>
